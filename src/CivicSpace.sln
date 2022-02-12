@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FullStackHero", "FullStackHero", "{A877F22C-650C-414A-BDFE-B674411B3929}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSH.WebApi", "FSH.WebApi", "{A877F22C-650C-414A-BDFE-B674411B3929}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "FullStackHero\src\Core\Application\Application.csproj", "{56C89F28-ECF8-400A-8A97-58307A475C86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "FSH.WebApi\src\Core\Application\Application.csproj", "{56C89F28-ECF8-400A-8A97-58307A475C86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "FullStackHero\src\Core\Domain\Domain.csproj", "{2A378386-00E8-45EB-85EF-A23B421A7831}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "FSH.WebApi\src\Core\Domain\Domain.csproj", "{2A378386-00E8-45EB-85EF-A23B421A7831}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "FullStackHero\src\Core\Shared\Shared.csproj", "{F7987D4D-E17D-4248-8CFC-DB27F9949EA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "FSH.WebApi\src\Core\Shared\Shared.csproj", "{F7987D4D-E17D-4248-8CFC-DB27F9949EA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8FF7938C-11E6-4E98-A965-854B193DB306}"
 EndProject
@@ -19,17 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrators", "Migrators", "{B3A7354E-F484-431D-B434-04446A83FB54}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "FullStackHero\src\Host\Host.csproj", "{FEA61BF7-2F3B-4C1B-9FB7-67702405F0B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "FSH.WebApi\src\Host\Host.csproj", "{FEA61BF7-2F3B-4C1B-9FB7-67702405F0B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "FullStackHero\src\Infrastructure\Infrastructure.csproj", "{626733E8-4034-434A-9667-0B7123AF7109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "FSH.WebApi\src\Infrastructure\Infrastructure.csproj", "{626733E8-4034-434A-9667-0B7123AF7109}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrators.MySQL", "FullStackHero\src\Migrators\Migrators.MySQL\Migrators.MySQL.csproj", "{9DB472A6-5109-4808-9862-6D4B0F501D35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrators.MySQL", "FSH.WebApi\src\Migrators\Migrators.MySQL\Migrators.MySQL.csproj", "{9DB472A6-5109-4808-9862-6D4B0F501D35}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrators.MSSQL", "FullStackHero\src\Migrators\Migrators.MSSQL\Migrators.MSSQL.csproj", "{59812A45-2BE4-416E-8CD4-FF9B92D6C6C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrators.MSSQL", "FSH.WebApi\src\Migrators\Migrators.MSSQL\Migrators.MSSQL.csproj", "{59812A45-2BE4-416E-8CD4-FF9B92D6C6C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrators.Oracle", "FullStackHero\src\Migrators\Migrators.Oracle\Migrators.Oracle.csproj", "{EB12901E-1105-4A4E-8BF5-365E192B3A38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrators.Oracle", "FSH.WebApi\src\Migrators\Migrators.Oracle\Migrators.Oracle.csproj", "{EB12901E-1105-4A4E-8BF5-365E192B3A38}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrators.PostgreSQL", "FullStackHero\src\Migrators\Migrators.PostgreSQL\Migrators.PostgreSQL.csproj", "{1FA97718-1504-453F-B094-5030FDC8FCBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrators.PostgreSQL", "FSH.WebApi\src\Migrators\Migrators.PostgreSQL\Migrators.PostgreSQL.csproj", "{1FA97718-1504-453F-B094-5030FDC8FCBB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CivicSpace.Domain", "CivicSpace.Domain\CivicSpace.Domain.csproj", "{16D26286-7BAD-45CE-97A8-91B64F1A8D81}"
 EndProject
