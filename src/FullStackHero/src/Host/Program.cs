@@ -22,7 +22,8 @@ try
 
     builder.Services.AddApplication();
     builder.Services.AddInfrastructure(builder.Configuration);
-    builder.Services.AddControllers().AddFluentValidation();
+    // changed AddControllers to AddControllersWithViews
+    builder.Services.AddControllersWithViews().AddFluentValidation();
 
     var app = builder.Build();
 
