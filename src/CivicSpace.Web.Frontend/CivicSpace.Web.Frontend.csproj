@@ -7,10 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ClientApp\**" />
-    <Content Remove="ClientApp\**" />
-    <EmbeddedResource Remove="ClientApp\**" />
-    <None Remove="ClientApp\**" />
+    <Compile Remove="ClientApp\node_modules\**" />
+    <Content Remove="ClientApp\node_modules\**" />
+    <EmbeddedResource Remove="ClientApp\node_modules\**" />
+    <None Remove="ClientApp\node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\components\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FullStackHero\src\Core\Domain\Domain.csproj" />
+    <ProjectReference Include="..\FSH.WebApi\src\Core\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>
