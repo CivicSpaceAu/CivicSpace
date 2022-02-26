@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Content\" />
+    <ProjectReference Include="..\CivicSpace.Domain\CivicSpace.Domain.csproj" />
+    <ProjectReference Include="..\FSH.WebApi\src\Core\Application\Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\NodeVotes\" />
+    <Folder Include="Content\NodeReactions\" />
+    <Folder Include="Content\NodeLinks\" />
   </ItemGroup>
 
 </Project>
