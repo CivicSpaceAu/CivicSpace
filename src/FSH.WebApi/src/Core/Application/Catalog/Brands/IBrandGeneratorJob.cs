@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿/*
+using System.ComponentModel;
 
 namespace FSH.WebApi.Application.Catalog.Brands;
 
@@ -10,3 +11,4 @@ public interface IBrandGeneratorJob : IScopedService
     [DisplayName("removes all radom brands created example job on Queue notDefault")]
     Task CleanAsync(CancellationToken cancellationToken);
 }
+*/

@@ -1,4 +1,5 @@
-﻿using FSH.WebApi.Domain.Common.Events;
+﻿/*
+using FSH.WebApi.Domain.Common.Events;
 
 namespace FSH.WebApi.Application.Catalog.Products;
 
@@ -31,3 +32,4 @@ public class DeleteProductRequestHandler : IRequestHandler<DeleteProductRequest,
         return request.Id;
     }
 }
+*/

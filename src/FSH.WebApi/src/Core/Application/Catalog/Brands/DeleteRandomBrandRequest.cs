@@ -1,4 +1,5 @@
-﻿namespace FSH.WebApi.Application.Catalog.Brands;
+﻿/*
+namespace FSH.WebApi.Application.Catalog.Brands;
 
 public class DeleteRandomBrandRequest : IRequest<string>
 {
@@ -16,3 +17,4 @@ public class DeleteRandomBrandRequestHandler : IRequestHandler<DeleteRandomBrand
         return Task.FromResult(jobId);
     }
 }
+*/

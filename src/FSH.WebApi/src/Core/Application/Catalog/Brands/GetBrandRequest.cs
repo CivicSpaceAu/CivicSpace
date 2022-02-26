@@ -1,4 +1,5 @@
-﻿namespace FSH.WebApi.Application.Catalog.Brands;
+﻿/*
+namespace FSH.WebApi.Application.Catalog.Brands;
 
 public class GetBrandRequest : IRequest<BrandDto>
 {
@@ -25,3 +26,4 @@ public class GetBrandRequestHandler : IRequestHandler<GetBrandRequest, BrandDto>
             (ISpecification<Brand, BrandDto>)new BrandByIdSpec(request.Id), cancellationToken)
         ?? throw new NotFoundException(string.Format(_localizer["brand.notfound"], request.Id));
 }
+*/

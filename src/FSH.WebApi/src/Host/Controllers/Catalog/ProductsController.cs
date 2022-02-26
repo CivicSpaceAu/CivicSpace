@@ -1,4 +1,5 @@
-﻿using FSH.WebApi.Application.Catalog.Products;
+﻿/*
+using FSH.WebApi.Application.Catalog.Products;
 
 namespace FSH.WebApi.Host.Controllers.Catalog;
 
@@ -62,4 +63,5 @@ public class ProductsController : VersionedApiController
         var result = await Mediator.Send(filter);
         return File(result, "application/octet-stream", "ProductExports");
     }
-    }
+}
+*/

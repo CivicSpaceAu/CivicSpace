@@ -1,3 +1,4 @@
+/*
 namespace FSH.WebApi.Application.Catalog.Brands;
 
 public class BrandDto : IDto
@@ -6,3 +7,4 @@ public class BrandDto : IDto
     public string Name { get; set; } = default!;
     public string? Description { get; set; }
 }
+*/

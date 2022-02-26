@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿/*
+using Mapster;
 
 namespace FSH.WebApi.Application.Catalog.Products;
 
@@ -27,3 +28,4 @@ public class GetProductViaDapperRequestHandler : IRequestHandler<GetProductViaDa
         return product.Adapt<ProductDto>();
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 using System.Reflection;
 using FSH.WebApi.Application.Common.Interfaces;
 using FSH.WebApi.Domain.Catalog;
@@ -45,3 +46,4 @@ public class BrandSeeder : ICustomSeeder
         }
     }
 }
+*/

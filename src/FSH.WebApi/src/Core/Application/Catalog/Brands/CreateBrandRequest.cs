@@ -1,3 +1,4 @@
+/*
 namespace FSH.WebApi.Application.Catalog.Brands;
 
 public class CreateBrandRequest : IRequest<Guid>
@@ -32,3 +33,4 @@ public class CreateBrandRequestHandler : IRequestHandler<CreateBrandRequest, Gui
         return brand.Id;
     }
 }
+*/

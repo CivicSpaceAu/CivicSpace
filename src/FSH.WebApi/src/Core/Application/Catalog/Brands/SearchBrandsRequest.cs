@@ -1,3 +1,4 @@
+/*
 namespace FSH.WebApi.Application.Catalog.Brands;
 
 public class SearchBrandsRequest : PaginationFilter, IRequest<PaginationResponse<BrandDto>>
@@ -27,3 +28,4 @@ public class SearchBrandsRequestHandler : IRequestHandler<SearchBrandsRequest, P
         return new PaginationResponse<BrandDto>(list, count, request.PageNumber, request.PageSize);
     }
 }
+*/

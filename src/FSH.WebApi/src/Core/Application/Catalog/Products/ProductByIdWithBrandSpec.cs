@@ -1,4 +1,5 @@
-﻿namespace FSH.WebApi.Application.Catalog.Products;
+﻿/*
+namespace FSH.WebApi.Application.Catalog.Products;
 
 public class ProductByIdWithBrandSpec : Specification<Product, ProductDetailsDto>, ISingleResultSpecification
 {
@@ -7,3 +8,4 @@ public class ProductByIdWithBrandSpec : Specification<Product, ProductDetailsDto
             .Where(p => p.Id == id)
             .Include(p => p.Brand);
 }
+*/

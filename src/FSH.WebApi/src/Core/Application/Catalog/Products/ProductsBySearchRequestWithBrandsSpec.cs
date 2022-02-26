@@ -1,4 +1,5 @@
-﻿namespace FSH.WebApi.Application.Catalog.Products;
+﻿/*
+namespace FSH.WebApi.Application.Catalog.Products;
 
 public class ProductsBySearchRequestWithBrandsSpec : EntitiesByPaginationFilterSpec<Product, ProductDto>
 {
@@ -11,3 +12,4 @@ public class ProductsBySearchRequestWithBrandsSpec : EntitiesByPaginationFilterS
             .Where(p => p.Rate >= request.MinimumRate!.Value, request.MinimumRate.HasValue)
             .Where(p => p.Rate <= request.MaximumRate!.Value, request.MaximumRate.HasValue);
 }
+*/

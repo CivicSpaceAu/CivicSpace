@@ -1,3 +1,4 @@
+/*
 using FSH.WebApi.Domain.Common.Events;
 
 namespace FSH.WebApi.Application.Catalog.Products;
@@ -33,3 +34,4 @@ public class CreateProductRequestHandler : IRequestHandler<CreateProductRequest,
         return product.Id;
     }
 }
+*/

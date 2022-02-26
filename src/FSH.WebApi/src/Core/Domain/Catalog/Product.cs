@@ -1,3 +1,4 @@
+/*
 namespace FSH.WebApi.Domain.Catalog;
 
 public class Product : AuditableEntity, IAggregateRoot
@@ -34,3 +35,4 @@ public class Product : AuditableEntity, IAggregateRoot
         return this;
     }
 }
+*/

@@ -1,4 +1,5 @@
-﻿namespace FSH.WebApi.Application.Catalog.Products;
+﻿/*
+namespace FSH.WebApi.Application.Catalog.Products;
 
 public class GetProductRequest : IRequest<ProductDetailsDto>
 {
@@ -20,3 +21,4 @@ public class GetProductRequestHandler : IRequestHandler<GetProductRequest, Produ
             (ISpecification<Product, ProductDetailsDto>)new ProductByIdWithBrandSpec(request.Id), cancellationToken)
         ?? throw new NotFoundException(string.Format(_localizer["product.notfound"], request.Id));
 }
+*/

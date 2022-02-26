@@ -24,8 +24,11 @@ public static class FSHResource
     public const string UserRoles = nameof(UserRoles);
     public const string Roles = nameof(Roles);
     public const string RoleClaims = nameof(RoleClaims);
+    /*
     public const string Products = nameof(Products);
     public const string Brands = nameof(Brands);
+    */
+    public const string Nodes = nameof(Nodes);
 }
 
 public static class FSHPermissions
@@ -48,6 +51,7 @@ public static class FSHPermissions
         new("Delete Roles", FSHAction.Delete, FSHResource.Roles),
         new("View RoleClaims", FSHAction.View, FSHResource.RoleClaims),
         new("Update RoleClaims", FSHAction.Update, FSHResource.RoleClaims),
+        /*
         new("View Products", FSHAction.View, FSHResource.Products, IsBasic: true),
         new("Search Products", FSHAction.Search, FSHResource.Products, IsBasic: true),
         new("Create Products", FSHAction.Create, FSHResource.Products),
@@ -61,6 +65,12 @@ public static class FSHPermissions
         new("Delete Brands", FSHAction.Delete, FSHResource.Brands),
         new("Generate Brands", FSHAction.Generate, FSHResource.Brands),
         new("Clean Brands", FSHAction.Clean, FSHResource.Brands),
+        */
+        new("View Nodes", FSHAction.View, FSHResource.Nodes, IsBasic: true),
+        new("Search Nodes", FSHAction.Search, FSHResource.Nodes, IsBasic: true),
+        new("Create Nodes", FSHAction.Create, FSHResource.Nodes),
+        new("Update Nodes", FSHAction.Update, FSHResource.Nodes),
+        new("Delete Nodes", FSHAction.Delete, FSHResource.Nodes),
         new("View Tenants", FSHAction.View, FSHResource.Tenants, IsRoot: true),
         new("Create Tenants", FSHAction.Create, FSHResource.Tenants, IsRoot: true),
         new("Update Tenants", FSHAction.Update, FSHResource.Tenants, IsRoot: true),

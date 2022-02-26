@@ -1,3 +1,4 @@
+/*
 namespace FSH.WebApi.Application.Catalog.Brands;
 
 public class UpdateBrandRequest : IRequest<Guid>
@@ -41,3 +42,4 @@ public class UpdateBrandRequestHandler : IRequestHandler<UpdateBrandRequest, Gui
         return request.Id;
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 using FSH.WebApi.Application.Catalog.Brands;
 
 namespace FSH.WebApi.Application.Catalog.Products;
@@ -11,3 +12,4 @@ public class ProductDetailsDto : IDto
     public string? ImagePath { get; set; }
     public BrandDto Brand { get; set; } = default!;
 }
+*/

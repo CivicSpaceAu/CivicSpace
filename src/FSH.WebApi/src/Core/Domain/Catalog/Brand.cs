@@ -1,4 +1,5 @@
-namespace FSH.WebApi.Domain.Catalog;
+/*
+ namespace FSH.WebApi.Domain.Catalog;
 
 public class Brand : AuditableEntity, IAggregateRoot
 {
@@ -18,3 +19,4 @@ public class Brand : AuditableEntity, IAggregateRoot
         return this;
     }
 }
+*/

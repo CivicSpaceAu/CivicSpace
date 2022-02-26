@@ -4,10 +4,12 @@ using FSH.WebApi.Domain.Identity;
 namespace FSH.WebApi.Application.Dashboard;
 
 public class SendStatsChangedNotificationHandler :
+    /*
     INotificationHandler<EventNotification<EntityCreatedEvent<Brand>>>,
     INotificationHandler<EventNotification<EntityDeletedEvent<Brand>>>,
     INotificationHandler<EventNotification<EntityCreatedEvent<Product>>>,
     INotificationHandler<EventNotification<EntityDeletedEvent<Product>>>,
+    */
     INotificationHandler<EventNotification<ApplicationRoleCreatedEvent>>,
     INotificationHandler<EventNotification<ApplicationRoleDeletedEvent>>,
     INotificationHandler<EventNotification<ApplicationUserCreatedEvent>>
@@ -18,6 +20,7 @@ public class SendStatsChangedNotificationHandler :
     public SendStatsChangedNotificationHandler(ILogger<SendStatsChangedNotificationHandler> logger, INotificationService notificationService) =>
         (_logger, _notificationService) = (logger, notificationService);
 
+    /*
     public Task Handle(EventNotification<EntityCreatedEvent<Brand>> notification, CancellationToken cancellationToken) =>
         SendStatsChangedNotification(notification.Event, cancellationToken);
     public Task Handle(EventNotification<EntityDeletedEvent<Brand>> notification, CancellationToken cancellationToken) =>
@@ -26,6 +29,7 @@ public class SendStatsChangedNotificationHandler :
         SendStatsChangedNotification(notification.Event, cancellationToken);
     public Task Handle(EventNotification<EntityDeletedEvent<Product>> notification, CancellationToken cancellationToken) =>
         SendStatsChangedNotification(notification.Event, cancellationToken);
+    */
     public Task Handle(EventNotification<ApplicationRoleCreatedEvent> notification, CancellationToken cancellationToken) =>
         SendStatsChangedNotification(notification.Event, cancellationToken);
     public Task Handle(EventNotification<ApplicationRoleDeletedEvent> notification, CancellationToken cancellationToken) =>

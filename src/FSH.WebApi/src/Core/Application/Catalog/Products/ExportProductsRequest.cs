@@ -1,4 +1,5 @@
-﻿using FSH.WebApi.Application.Common.Exporters;
+﻿/*
+using FSH.WebApi.Application.Common.Exporters;
 using Mapster;
 
 namespace FSH.WebApi.Application.Catalog.Products;
@@ -43,3 +44,4 @@ public class ExportProductsWithBrandsSpecification : EntitiesByBaseFilterSpec<Pr
             .Where(p => p.Rate <= request.MaximumRate!.Value, request.MaximumRate.HasValue);
     }
 }
+*/

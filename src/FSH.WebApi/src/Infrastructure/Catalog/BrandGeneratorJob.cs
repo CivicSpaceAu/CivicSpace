@@ -1,4 +1,5 @@
-﻿using Ardalis.Specification;
+﻿/*
+using Ardalis.Specification;
 using FSH.WebApi.Application.Catalog.Brands;
 using FSH.WebApi.Application.Common.Interfaces;
 using FSH.WebApi.Application.Common.Persistence;
@@ -102,3 +103,4 @@ public class RandomBrandsSpec : Specification<Brand>
     public RandomBrandsSpec() =>
         Query.Where(b => !string.IsNullOrEmpty(b.Name) && b.Name.Contains("Brand Random"));
 }
+*/

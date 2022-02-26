@@ -1,3 +1,4 @@
+/*
 namespace FSH.WebApi.Application.Catalog.Products;
 
 public class UpdateProductRequestValidator : CustomValidator<UpdateProductRequest>
@@ -24,3 +25,4 @@ public class UpdateProductRequestValidator : CustomValidator<UpdateProductReques
                 .WithMessage((_, id) => string.Format(localizer["brand.notfound"], id));
     }
 }
+*/

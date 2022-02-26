@@ -1,3 +1,4 @@
+/*
 namespace FSH.WebApi.Application.Catalog.Products;
 
 public class SearchProductsRequest : PaginationFilter, IRequest<PaginationResponse<ProductDto>>
@@ -23,3 +24,4 @@ public class SearchProductsRequestHandler : IRequestHandler<SearchProductsReques
         return new PaginationResponse<ProductDto>(list, count, request.PageNumber, request.PageSize);
     }
 }
+*/

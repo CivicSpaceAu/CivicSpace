@@ -1,3 +1,4 @@
+/*
 using FSH.WebApi.Domain.Common.Events;
 
 namespace FSH.WebApi.Application.Catalog.Products;
@@ -55,3 +56,4 @@ public class UpdateProductRequestHandler : IRequestHandler<UpdateProductRequest,
         return request.Id;
     }
 }
+*/

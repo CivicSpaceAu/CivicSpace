@@ -1,4 +1,5 @@
-﻿using FSH.WebApi.Application.Catalog.Products;
+﻿/*
+using FSH.WebApi.Application.Catalog.Products;
 
 namespace FSH.WebApi.Application.Catalog.Brands;
 
@@ -35,3 +36,4 @@ public class DeleteBrandRequestHandler : IRequestHandler<DeleteBrandRequest, Gui
         return request.Id;
     }
 }
+*/

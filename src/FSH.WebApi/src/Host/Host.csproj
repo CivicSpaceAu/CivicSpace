@@ -16,7 +16,7 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\..\CivicSpace.Application\CivicSpace.Application.csproj" />
-        <ProjectReference Include="..\..\..\CivicSpace.Web.Backend\CivicSpace.Web.Backend.csproj" />
+        <ProjectReference Include="..\..\..\CivicSpace.Infrastructure\CivicSpace.Infrastructure.csproj" />
         <ProjectReference Include="..\Core\Application\Application.csproj" />
         <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
         <ProjectReference Include="..\Migrators\Migrators.MySQL\Migrators.MySQL.csproj" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,3 +14,4 @@ public class ProductExportDto : IDto
     public decimal Rate { get; set; } = default!;
     public string BrandName { get; set; } = default!;
 }
+*/
