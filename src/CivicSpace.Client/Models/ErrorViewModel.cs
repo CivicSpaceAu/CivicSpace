@@ -1,4 +1,4 @@
-namespace CivicSpace.Web.Frontend.Models
+namespace CivicSpace.Client.Models
 {
     public class ErrorViewModel
     {

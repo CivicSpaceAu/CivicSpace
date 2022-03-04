@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "CivicSpace.Web.Frontend": {
+    "CivicSpace.Client": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace CivicSpace.Web.Frontend.Controllers
+namespace CivicSpace.Client.Controllers
 {
     public class HomeController : Controller
     {
