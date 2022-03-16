@@ -3,17 +3,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CivicSpace.Domain.Entities.Content
 {
-    public class NodeReaction : AuditableEntity
+    public class NodeReaction : AuditableEntity, IAggregateRoot
     {
         [ForeignKey("Node")]
-        public string NodeId { get; set; }
+        public Guid NodeId { get; set; }
         public virtual Node? Node { get; set; }
-        public string ReactionType { get; set; }
+        public string Type { get; set; }
 
-        public NodeReaction(string nodeId, string reactionType)
+        public NodeReaction(Guid nodeId, string reactionType)
         {
             NodeId = nodeId;
-            ReactionType = reactionType;
+            Type = reactionType;
+        }
+
+        public NodeReaction Update(string type)
+        {
+            if (Type.Equals(type) is not true) Type = type;
+            return this;
         }
     }
 }

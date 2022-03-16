@@ -29,6 +29,9 @@ public static class FSHResource
     public const string Brands = nameof(Brands);
     */
     public const string Nodes = nameof(Nodes);
+    public const string NodeLinks = nameof(NodeLinks);
+    public const string NodeReactions = nameof(NodeReactions);
+    public const string NodeVotes = nameof(NodeVotes);
 }
 
 public static class FSHPermissions

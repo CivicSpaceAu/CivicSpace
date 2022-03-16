@@ -16,6 +16,9 @@ public class CreateNodeRequest : IRequest<Guid>
     public string Content { get; set; } = default!;
     public string Status { get; set; } = default!;
     public string CustomFields { get; set; } = default!;
+    public Guid? ParentId { get; set; }
+    public string? Path { get; set; }
+    public string Tags { get; set; } = default!;
 }
 
 public class CreateNodeRequestValidator : CustomValidator<CreateNodeRequest>
@@ -37,7 +40,7 @@ public class CreateNodeRequestHandler : IRequestHandler<CreateNodeRequest, Guid>
 
     public async Task<Guid> Handle(CreateNodeRequest request, CancellationToken cancellationToken)
     {
-        var node = new Node(request.Module, request.Type, request.Slug, request.Title, request.Content, request.Status, request.CustomFields);
+        var node = new Node(request.Module, request.Type, request.Slug, request.Title, request.Content, request.Status, request.CustomFields, request.ParentId, request.Path, request.Tags);
 
         await _repository.AddAsync(node, cancellationToken);
 

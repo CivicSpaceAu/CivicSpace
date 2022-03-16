@@ -16,6 +16,7 @@ public class UpdateNodeRequest : IRequest<Guid>
     public string? Content { get; set; }
     public string Status { get; set; } = default!;
     public string? CustomFields { get; set; }
+    public string? Tags { get; set; }
 }
 
 public class UpdateNodeRequestValidator : CustomValidator<UpdateNodeRequest>
@@ -45,7 +46,7 @@ public class UpdateNodeRequestHandler : IRequestHandler<UpdateNodeRequest, Guid>
 
         _ = node ?? throw new NotFoundException(string.Format(_localizer["node.notfound"], request.Id));
 
-        node.Update(request.Slug, request.Title, request.Content, request.Status, request.CustomFields);
+        node.Update(request.Slug, request.Title, request.Content, request.Status, request.CustomFields, request.Tags);
 
         await _repository.UpdateAsync(node, cancellationToken);
 

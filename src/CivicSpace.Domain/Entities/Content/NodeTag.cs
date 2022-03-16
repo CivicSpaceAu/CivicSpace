@@ -5,24 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CivicSpace.Domain.Entities.Content
 {
     // https://www.reddit.com/r/programming/comments/bg030/upvotedownvote_database_structure/
-    public class NodeVote : AuditableEntity, IAggregateRoot
+    public class NodeTag
     {
         [ForeignKey("Node")]
         public Guid NodeId { get; set; }
         public Node? Node { get; set; }
         [Required]
-        public short Score { get; set; }
+        public string Tag { get; set; }
 
-        public NodeVote(Guid nodeId, short score)
+        public NodeTag(Guid nodeId, string tag)
         {
             NodeId = nodeId;
-            Score = score;
-        }
-
-        public NodeVote Update(short score)
-        {
-            Score = score;
-            return this;
+            Tag = tag;
         }
     }
 }

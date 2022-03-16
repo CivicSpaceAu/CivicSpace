@@ -17,7 +17,8 @@ public class GetNodeRequest : IRequest<NodeDto>
 public class NodeByIdSpec : Specification<Node, NodeDto>, ISingleResultSpecification
 {
     public NodeByIdSpec(Guid id) =>
-        Query.Where(p => p.Id == id);
+        Query.Where(n => n.Id == id)
+        .Include(n => n.Tags);
 }
 
 public class GetNodeRequestHandler : IRequestHandler<GetNodeRequest, NodeDto>
