@@ -30,13 +30,9 @@ public class DeleteNodeLinkRequestHandler : IRequestHandler<DeleteNodeLinkReques
 
     public async Task<Guid> Handle(DeleteNodeLinkRequest request, CancellationToken cancellationToken)
     {
-        var nodeLink = await _repository.GetBySpecAsync((ISpecification<NodeLink, NodeLink>)
-            new NodeLinkSpec(request.FromNodeId, request.ToNodeId));
-
+        var nodeLink = await _repository.GetBySpecAsync(new NodeLinkSpec(request.FromNodeId, request.ToNodeId));
         _ = nodeLink ?? throw new NotFoundException(_localizer["nodeLink.notfound"]);
-
         await _repository.DeleteAsync(nodeLink, cancellationToken);
-
         return nodeLink.Id;
     }
 }

@@ -14,13 +14,6 @@ public class GetNodeRequest : IRequest<NodeDto>
     public GetNodeRequest(Guid id) => Id = id;
 }
 
-public class NodeByIdSpec : Specification<Node, NodeDto>, ISingleResultSpecification
-{
-    public NodeByIdSpec(Guid id) =>
-        Query.Where(n => n.Id == id)
-        .Include(n => n.Tags);
-}
-
 public class GetNodeRequestHandler : IRequestHandler<GetNodeRequest, NodeDto>
 {
     private readonly IRepository<Node> _repository;
@@ -30,6 +23,6 @@ public class GetNodeRequestHandler : IRequestHandler<GetNodeRequest, NodeDto>
 
     public async Task<NodeDto> Handle(GetNodeRequest request, CancellationToken cancellationToken) =>
         await _repository.GetBySpecAsync(
-            (ISpecification<Node, NodeDto>)new NodeByIdSpec(request.Id), cancellationToken)
+            (ISpecification<Node, NodeDto>)new NodeSpec(request.Id), cancellationToken)
         ?? throw new NotFoundException(string.Format(_localizer["node.notfound"], request.Id));
 }

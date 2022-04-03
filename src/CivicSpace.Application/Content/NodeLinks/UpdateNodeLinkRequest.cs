@@ -42,15 +42,10 @@ public class UpdateNodeLinkRequestHandler : IRequestHandler<UpdateNodeLinkReques
 
     public async Task<Guid> Handle(UpdateNodeLinkRequest request, CancellationToken cancellationToken)
     {
-        var nodeLink = await _repository.GetBySpecAsync((ISpecification<NodeLink, NodeLink>)
-            new NodeLinkSpec(request.FromNodeId, request.ToNodeId));
-
+        var nodeLink = await _repository.GetBySpecAsync(new NodeLinkSpec(request.FromNodeId, request.ToNodeId));
         _ = nodeLink ?? throw new NotFoundException(string.Format(_localizer["node.notfound"], request.Id));
-
         nodeLink.Update(request.Type, request.Weight);
-
         await _repository.UpdateAsync(nodeLink, cancellationToken);
-
         return request.Id;
     }
 }

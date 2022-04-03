@@ -41,15 +41,10 @@ public class UpdateNodeVoteRequestHandler : IRequestHandler<UpdateNodeVoteReques
 
     public async Task<Guid> Handle(UpdateNodeVoteRequest request, CancellationToken cancellationToken)
     {
-        var nodeVote = await _repository.GetBySpecAsync((ISpecification<NodeVote, NodeVote>)
-            new NodeVoteSpec(request.NodeId, request.CreatedBy));
-
+        var nodeVote = await _repository.GetBySpecAsync(new NodeVoteSpec(request.NodeId, request.CreatedBy));
         _ = nodeVote ?? throw new NotFoundException(_localizer["nodeVote.notfound"]);
-
         nodeVote.Update(request.Score);
-        
         await _repository.UpdateAsync(nodeVote, cancellationToken);
-
         return request.Id;
     }
 }

@@ -24,6 +24,10 @@ public class ApplicationDbContext : BaseDbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<Node>()
+            .HasMany(n => n.Tags)
+            .WithOne(nt => nt.Node);
+
         modelBuilder.HasDefaultSchema(SchemaNames.Catalog);
     }
 }

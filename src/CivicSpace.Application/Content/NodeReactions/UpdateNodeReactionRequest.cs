@@ -42,8 +42,7 @@ public class UpdateNodeReactionRequestHandler : IRequestHandler<UpdateNodeReacti
 
     public async Task<Guid> Handle(UpdateNodeReactionRequest request, CancellationToken cancellationToken)
     {
-        var nodeReaction = await _repository.GetBySpecAsync((ISpecification<NodeReaction, NodeReaction>)
-            new NodeReactionSpec(request.NodeId, request.CreatedBy));
+        var nodeReaction = await _repository.GetBySpecAsync(new NodeReactionSpec(request.NodeId, request.CreatedBy));
 
         _ = nodeReaction ?? throw new NotFoundException(_localizer["nodeReaction.notfound"]);
 

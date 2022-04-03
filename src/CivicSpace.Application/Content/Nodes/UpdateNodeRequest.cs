@@ -1,4 +1,5 @@
-﻿using CivicSpace.Domain.Entities.Content;
+﻿using Ardalis.Specification;
+using CivicSpace.Domain.Entities.Content;
 using FluentValidation;
 using FSH.WebApi.Application.Common.Exceptions;
 using FSH.WebApi.Application.Common.Persistence;
@@ -42,14 +43,10 @@ public class UpdateNodeRequestHandler : IRequestHandler<UpdateNodeRequest, Guid>
 
     public async Task<Guid> Handle(UpdateNodeRequest request, CancellationToken cancellationToken)
     {
-        var node = await _repository.GetByIdAsync(request.Id, cancellationToken);
-
+        var node = await _repository.GetBySpecAsync(new NodeSpec(request.Id), cancellationToken);
         _ = node ?? throw new NotFoundException(string.Format(_localizer["node.notfound"], request.Id));
-
         node.Update(request.Slug, request.Title, request.Content, request.Status, request.CustomFields, request.Tags);
-
         await _repository.UpdateAsync(node, cancellationToken);
-
         return request.Id;
     }
 }

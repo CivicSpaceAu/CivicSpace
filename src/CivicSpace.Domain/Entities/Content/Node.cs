@@ -40,7 +40,7 @@ namespace CivicSpace.Domain.Entities.Content
             }
         }
 
-        public Node(string module, string type, string slug, string title, string? content, string status, string? customFields, Guid? parentId, string? path, string? tags)
+        public Node(string module, string type, string slug, string title, string? content, string status, string? customFields, Guid? parentId, string? path)
         {
             Module = module;
             Type = type;
@@ -51,6 +51,12 @@ namespace CivicSpace.Domain.Entities.Content
             CustomFields = customFields;
             ParentId = parentId;
             Path = path;
+            Tags = new HashSet<NodeTag>();
+        }
+
+        public Node(string module, string type, string slug, string title, string? content, string status, string? customFields, Guid? parentId, string? path, string? tags) :
+            this(module, type, slug, title, content, status, customFields, parentId, path)
+        {
             SetTags(tags);
         }
 
@@ -65,13 +71,14 @@ namespace CivicSpace.Domain.Entities.Content
             return this;
         }
 
-        private void SetTags(string tags)
+        private void SetTags(string? tags)
         {
             Tags.Clear();
-            foreach (string tag in tags.Split(' '))
-            {
-                Tags.Add(new NodeTag(Id, tag));
-            }
+            if (!string.IsNullOrEmpty(tags))
+                foreach (string tag in tags.Split(' '))
+                {
+                    Tags.Add(new NodeTag(Id, tag));
+                }
         }
     }
 }

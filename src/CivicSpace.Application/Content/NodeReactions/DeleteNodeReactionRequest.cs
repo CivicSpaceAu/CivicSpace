@@ -26,8 +26,7 @@ public class DeleteNodeReactionRequestHandler : IRequestHandler<DeleteNodeReacti
 
     public async Task<Guid> Handle(DeleteNodeReactionRequest request, CancellationToken cancellationToken)
     {
-        var nodeReaction = await _repository.GetBySpecAsync((ISpecification<NodeReaction, NodeReaction>)
-            new NodeReactionSpec(request.NodeId, request.CreatedBy));
+        var nodeReaction = await _repository.GetBySpecAsync(new NodeReactionSpec(request.NodeId, request.CreatedBy));
 
         _ = nodeReaction ?? throw new NotFoundException(_localizer["nodeReaction.notfound"]);
 

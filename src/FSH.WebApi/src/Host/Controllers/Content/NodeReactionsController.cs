@@ -3,7 +3,7 @@ using FSH.WebApi.Host.Controllers;
 
 namespace CivicSpace.Web.Backend.Controllers;
 
-public class NodeVotesController : VersionedApiController
+public class NodeReactionsController : VersionedApiController
 {
     [HttpPost("search")]
     [MustHavePermission(FSHAction.Search, FSHResource.NodeVotes)]
@@ -13,13 +13,13 @@ public class NodeVotesController : VersionedApiController
         return Mediator.Send(request);
     }
 
-    [HttpGet("{id:guid}")]
-    [MustHavePermission(FSHAction.View, FSHResource.NodeVotes)]
-    [OpenApiOperation("Get node details.", "")]
-    public Task<NodeVoteDto> GetAsync(Guid id)
-    {
-        return Mediator.Send(new GetNodeVotesRequest(id));
-    }
+    //[HttpGet("{id:guid}")]
+    //[MustHavePermission(FSHAction.View, FSHResource.NodeVotes)]
+    //[OpenApiOperation("Get node details.", "")]
+    //public Task<NodeVoteDto> GetAsync(Guid id)
+    //{
+    //    return Mediator.Send(new GetNodeReactionsRequest(id));
+    //}
 
     [HttpPost]
     [MustHavePermission(FSHAction.Create, FSHResource.NodeVotes)]

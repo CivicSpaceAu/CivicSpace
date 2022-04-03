@@ -5,21 +5,29 @@ namespace CivicSpace.Web.Backend.Controllers;
 
 public class NodeLinksController : VersionedApiController
 {
-    [HttpPost("search")]
+    [HttpPost("getFrom")]
     [MustHavePermission(FSHAction.Search, FSHResource.NodeLinks)]
-    [OpenApiOperation("Search nodes using available filters.", "")]
-    public Task<PaginationResponse<NodeDto>> SearchAsync(SearchNodeLinksRequest request)
+    [OpenApiOperation("Get Fro.", "")]
+    public Task<PaginationResponse<NodeLinkDto>> SearchAsync(GetFromNodeLinksRequest request)
     {
         return Mediator.Send(request);
     }
 
-    [HttpGet("{id:guid}")]
-    [MustHavePermission(FSHAction.View, FSHResource.NodeLinks)]
-    [OpenApiOperation("Get node details.", "")]
-    public Task<NodeVoteDto> GetAsync(Guid id)
+    [HttpPost("getTo")]
+    [MustHavePermission(FSHAction.Search, FSHResource.NodeLinks)]
+    [OpenApiOperation("Search nodes using available filters.", "")]
+    public Task<PaginationResponse<NodeLinkDto>> SearchAsync(GetToNodeLinksRequest request)
     {
-        return Mediator.Send(new GetNodeLinksRequest(id));
+        return Mediator.Send(request);
     }
+
+    //[HttpGet("{id:guid}")]
+    //[MustHavePermission(FSHAction.View, FSHResource.NodeLinks)]
+    //[OpenApiOperation("Get node details.", "")]
+    //public Task<PaginationResponse<NodeLinkDto>> GetAsync(Guid id)
+    //{
+    //    return Mediator.Send(new GetNodeLinksRequest(id));
+    //}
 
     [HttpPost]
     [MustHavePermission(FSHAction.Create, FSHResource.NodeLinks)]

@@ -10,10 +10,10 @@ namespace CivicSpace.Domain.Entities.Content
         public virtual Node? Node { get; set; }
         public string Type { get; set; }
 
-        public NodeReaction(Guid nodeId, string reactionType)
+        public NodeReaction(Guid nodeId, string type)
         {
             NodeId = nodeId;
-            Type = reactionType;
+            Type = type;
         }
 
         public NodeReaction Update(string type)

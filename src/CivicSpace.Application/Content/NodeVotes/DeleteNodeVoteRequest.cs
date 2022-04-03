@@ -30,13 +30,9 @@ public class DeleteNodeVoteRequestHandler : IRequestHandler<DeleteNodeVoteReques
 
     public async Task<Guid> Handle(DeleteNodeVoteRequest request, CancellationToken cancellationToken)
     {
-        var nodeVote = await _repository.GetBySpecAsync((ISpecification<NodeVote, NodeVote>)
-            new NodeVoteSpec(request.NodeId, request.CreatedBy));
-
+        var nodeVote = await _repository.GetBySpecAsync(new NodeVoteSpec(request.NodeId, request.CreatedBy));
         _ = nodeVote ?? throw new NotFoundException(_localizer["nodeVote.notfound"]);
-
         await _repository.DeleteAsync(nodeVote, cancellationToken);
-
         return nodeVote.Id;
     }
 }

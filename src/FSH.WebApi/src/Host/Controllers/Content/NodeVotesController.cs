@@ -16,7 +16,7 @@ public class NodeVotesController : VersionedApiController
     [HttpGet("{id:guid}")]
     [MustHavePermission(FSHAction.View, FSHResource.NodeVotes)]
     [OpenApiOperation("Get node details.", "")]
-    public Task<NodeVoteDto> GetAsync(Guid id)
+    public Task<PaginationResponse<NodeVoteDto>> GetAsync(Guid id)
     {
         return Mediator.Send(new GetNodeVotesRequest(id));
     }
