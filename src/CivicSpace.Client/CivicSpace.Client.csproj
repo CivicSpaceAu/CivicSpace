@@ -19,6 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Script Remove="ClientApp\src\features\counter\counter-aPI.ts" />
+    <Script Remove="ClientApp\src\features\counter\counter-slice.spec.ts" />
+    <Script Remove="ClientApp\src\features\counter\counter-slice.ts" />
+    <Script Remove="ClientApp\src\service-worker.ts" />
+    <Script Remove="ClientApp\src\setup-tests.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.3.0" />
     <PackageReference Include="JavaScriptEngineSwitcher.V8" Version="3.17.2" />
     <PackageReference Include="Microsoft.ClearScript.V8.Native.win-x64" Version="7.2.2" />
@@ -33,6 +41,7 @@
     <Folder Include="ClientApp\src\common\" />
     <Folder Include="ClientApp\src\features\forums\" />
     <Folder Include="ClientApp\src\features\blogs\" />
+    <Folder Include="ClientApp\src\features\albums\" />
     <Folder Include="ClientApp\src\features\profiles\" />
   </ItemGroup>
 

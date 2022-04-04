@@ -39,12 +39,15 @@ app.UseReact(config =>
     // Browserify or Gulp), you can improve performance by disabling
     // ReactJS.NET's version of Babel and loading the pre-transpiled
     // scripts. Example:
-    //config
-    //  .SetLoadBabel(false)
-    //  .AddScriptWithoutTransform("~/js/bundle.server.js");
+    config
+      .SetLoadBabel(false)
+      .AddScriptWithoutTransform("~/js/app.js");
 });
 
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    ServeUnknownFileTypes = true,
+});
 
 app.UseRouting();
 

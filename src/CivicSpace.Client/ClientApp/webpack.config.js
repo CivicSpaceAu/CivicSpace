@@ -6,9 +6,9 @@ module.exports = {
         main: './wwwroot/js/app.js'
     },
     output: {
-        path: path.resolve(__dirname, './wwwroot/js/dist'),
-        filename: 'bundle.js',
-        publicPath: 'dist/'
+        path: path.resolve(__dirname, './wwwroot/js'),
+        filename: 'app.js',
+        publicPath: 'js/'
     },
     resolve: {
         extensions: ['*', '.js', '.jsx']
