@@ -1,4 +1,4 @@
-CivicSpace is unlicensed.
+CivicSpace is currently unlicensed.
 
 “Unlicensed” does not mean “public domain.” This code was released to the public and doesn’t come with a specific license.
 By default, the copyright for unlicensed code belongs to its creator, who must grant explicit permission for you to use it. 
