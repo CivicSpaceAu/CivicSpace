@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Script Remove="ClientApp\src\features\counter\counter-aPI.ts" />
+    <Script Remove="ClientApp\src\features\counter\counter-api.ts" />
     <Script Remove="ClientApp\src\features\counter\counter-slice.spec.ts" />
     <Script Remove="ClientApp\src\features\counter\counter-slice.ts" />
     <Script Remove="ClientApp\src\service-worker.ts" />
