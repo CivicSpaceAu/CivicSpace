@@ -14,6 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+	 <None Update="wwwroot\**">
+		 <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	 </None>
+  </ItemGroup>
+	
+  <ItemGroup>
     <Script Include="**" />
     <Script Remove="**.d.ts" />
   </ItemGroup>
