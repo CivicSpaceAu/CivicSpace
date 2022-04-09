@@ -1,0 +1,5 @@
+CivicSpace is unlicensed.
+
+“Unlicensed” does not mean “public domain.” This code was released to the public and doesn’t come with a specific license.
+By default, the copyright for unlicensed code belongs to its creator, who must grant explicit permission for you to use it. 
+The safest way to approach unlicensed code is to treat it as proprietary (i.e., not open source).
