@@ -1,5 +1,5 @@
 {
-  "name": "CivicSpace",
+  "name": "civicspace",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,15 +12,10 @@
     "@types/react": "^16.14.23",
     "@types/react-dom": "^16.9.14",
     "@types/react-redux": "^7.1.22",
-    "css-loader": "^6.7.1",
-    "postcss-loader": "^6.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
-    "react-scripts": "^5.0.0",
-    "sass": "^1.50.0",
-    "sass-loader": "^12.6.0",
-    "url-loader": "^4.1.1"
+    "react-scripts": "^5.0.0"
   },
   "scripts": {
     "start": "webpack --mode development --hot",
@@ -44,9 +39,14 @@
     ]
   },
   "devDependencies": {
+    "css-loader": "^6.7.1",
     "mini-css-extract-plugin": "^2.6.0",
+    "postcss-loader": "^6.2.1",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.6.0",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.3",
+    "url-loader": "^4.1.1",
     "webpack": "^5.71.0",
     "webpack-cli": "^4.9.2"
   }
