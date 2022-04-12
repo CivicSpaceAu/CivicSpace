@@ -44,10 +44,7 @@ app.UseReact(config =>
       .AddScriptWithoutTransform("~/js/app.js");
 });
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    ServeUnknownFileTypes = true,
-});
+app.UseStaticFiles();
 
 app.UseRouting();
 
