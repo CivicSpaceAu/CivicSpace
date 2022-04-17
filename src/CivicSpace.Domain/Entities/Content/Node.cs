@@ -16,29 +16,13 @@ namespace CivicSpace.Domain.Entities.Content
         public string Slug { get; private set; }
         public string? CustomFields { get; private set; }
 
-        // Taxonomy Schemes
         public Guid? ParentId { get; private set; }
         public string? Path { get; private set; }
 
         [ForeignKey("NodeTag")]
         public ICollection<NodeTag> Tags { get; set; }
-
-        // Metrics
-        public int Weight { get; set; }
-        public int ChildCount { get; set; }
-        public int DescendantCount { get; set; }
-        public int UpVotes { get; set; }
-        public int DownVotes { get; set; }
-        public double Hot { get; set; }
-
-        public int TotalVotes
-        {
-            get
-            {
-                var votes = UpVotes - DownVotes;
-                return votes > 0 ? votes : 0;
-            }
-        }
+        [ForeignKey("NodeMetric")]
+        public ICollection<NodeMetric> Metrics { get; set; }
 
         public Node(string module, string type, string slug, string title, string? content, string status, string? customFields, Guid? parentId, string? path)
         {
@@ -52,6 +36,7 @@ namespace CivicSpace.Domain.Entities.Content
             ParentId = parentId;
             Path = path;
             Tags = new HashSet<NodeTag>();
+            Metrics = new HashSet<NodeMetric>();
         }
 
         public Node(string module, string type, string slug, string title, string? content, string status, string? customFields, Guid? parentId, string? path, string? tags) :
