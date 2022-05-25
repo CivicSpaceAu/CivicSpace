@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace CivicSpace.Domain.Entities.Content
 {
-    public class NodeMetric
+    public class NodeCustomField
     {
         public Guid Id { get; protected set; } = default!;
-        public Guid NodeId { get; set; }
-        public Node Node { get; set; }
+        public Guid NodeId { get; set; } = default!;
+        public Node Node { get; set; } = default!;
         public string Key { get; set; }
-        public double Value { get; set; }
+        public string Value { get; set; }
 
-        public NodeMetric(Guid nodeId, string key, double value)
+        public NodeCustomField(Guid nodeId, string key, string value)
         {
             NodeId = nodeId;
             Key = key;

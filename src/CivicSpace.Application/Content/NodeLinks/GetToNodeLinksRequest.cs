@@ -22,8 +22,8 @@ public class GetToNodeLinksRequest : PaginationFilter, IRequest<PaginationRespon
 
 public class ToNodeLinksSpec : Specification<NodeLink, PaginationResponse<NodeLinkDto>>, ISingleResultSpecification
 {
-    public ToNodeLinksSpec(Guid fromNodeId, string type) =>
-        Query.Where(nl => nl.FromNodeId == fromNodeId && (string.IsNullOrEmpty(type) || nl.Type == type));
+    public ToNodeLinksSpec(Guid nodeId, string type) =>
+        Query.Where(nl => nl.NodeId == nodeId && (string.IsNullOrEmpty(type) || nl.Type == type));
 }
 
 public class GetToNodeLinksRequestHandler : IRequestHandler<GetToNodeLinksRequest, PaginationResponse<NodeLinkDto>>

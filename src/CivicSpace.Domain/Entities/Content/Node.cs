@@ -14,17 +14,22 @@ namespace CivicSpace.Domain.Entities.Content
         public string? Content { get; private set; }
         public string Status { get; private set; }
         public string Slug { get; private set; }
-        public string? CustomFields { get; private set; }
 
         public Guid? ParentId { get; private set; }
         public string? Path { get; private set; }
 
+        [ForeignKey("NodeCustomField")]
+        public ICollection<NodeCustomField> CustomFields { get; set; } = default!;
+        [ForeignKey("NodeLink")]
+        public ICollection<NodeLink> Links { get; set; } = default!;
+        [ForeignKey("NodeReaction")]
+        public ICollection<NodeReaction> Reactions { get; set; } = default!;
         [ForeignKey("NodeTag")]
-        public ICollection<NodeTag> Tags { get; set; }
-        [ForeignKey("NodeMetric")]
-        public ICollection<NodeMetric> Metrics { get; set; }
+        public ICollection<NodeTag> Tags { get; set; } = default!;
+        [ForeignKey("NodeVote")]
+        public ICollection<NodeVote> Votes { get; set; } = default!;
 
-        public Node(string module, string type, string slug, string title, string? content, string status, string? customFields, Guid? parentId, string? path)
+        public Node(string module, string type, string slug, string title, string? content, string status, Guid? parentId, string? path)
         {
             Module = module;
             Type = type;
@@ -32,26 +37,23 @@ namespace CivicSpace.Domain.Entities.Content
             Title = title;
             Content = content;
             Status = status;
-            CustomFields = customFields;
             ParentId = parentId;
             Path = path;
             Tags = new HashSet<NodeTag>();
-            Metrics = new HashSet<NodeMetric>();
         }
 
         public Node(string module, string type, string slug, string title, string? content, string status, string? customFields, Guid? parentId, string? path, string? tags) :
-            this(module, type, slug, title, content, status, customFields, parentId, path)
+            this(module, type, slug, title, content, status, parentId, path)
         {
             SetTags(tags);
         }
 
-        public Node Update(string? slug, string? title, string? content, string? status, string? customFields, string? tags)
+        public Node Update(string? slug, string? title, string? content, string? status, string? tags)
         {
             if (slug is not null && Slug?.Equals(slug) is not true) Slug = slug;
             if (title is not null && Title?.Equals(title) is not true) Title = title;
             if (content is not null && Content?.Equals(content) is not true) Content = content;
             if (status is not null && Status?.Equals(status) is not true) Status = status;
-            if (customFields is not null && CustomFields?.Equals(customFields) is not true) CustomFields = customFields;
             if (tags is not null) SetTags(tags);
             return this;
         }

@@ -5,6 +5,6 @@ namespace CivicSpace.Application.Content.Nodes;
 
 public class NodeLinkSpec : Specification<NodeLink, NodeLink>, ISingleResultSpecification
 {
-    public NodeLinkSpec(Guid fromNodeId, Guid toNodeId) =>
-        Query.Where(nl => nl.FromNodeId == fromNodeId && nl.ToNodeId == toNodeId);
+    public NodeLinkSpec(Guid nodeId, Guid linkedNodeId) =>
+        Query.Where(nl => nl.NodeId == nodeId && nl.LinkedNodeId == linkedNodeId);
 }

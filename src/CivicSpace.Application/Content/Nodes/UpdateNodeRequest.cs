@@ -16,7 +16,6 @@ public class UpdateNodeRequest : IRequest<Guid>
     public string Title { get; set; } = default!;
     public string? Content { get; set; }
     public string Status { get; set; } = default!;
-    public string? CustomFields { get; set; }
     public string? Tags { get; set; }
 }
 
@@ -45,7 +44,7 @@ public class UpdateNodeRequestHandler : IRequestHandler<UpdateNodeRequest, Guid>
     {
         var node = await _repository.GetBySpecAsync(new NodeSpec(request.Id), cancellationToken);
         _ = node ?? throw new NotFoundException(string.Format(_localizer["node.notfound"], request.Id));
-        node.Update(request.Slug, request.Title, request.Content, request.Status, request.CustomFields, request.Tags);
+        node.Update(request.Slug, request.Title, request.Content, request.Status, request.Tags);
         await _repository.UpdateAsync(node, cancellationToken);
         return request.Id;
     }

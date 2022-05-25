@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './app.css';
 import Home from './features/home/home';
-import Profile from './features/profiles/profile';
-import EditProfile from './features/profiles/edit-profile';
+import ViewProfile from './features/profiles/components/view-profile';
+import EditProfile from './features/profiles/components/edit-profile';
 import Page from './features/pages/page';
 import AddPage from './features/pages/add-page';
 import EditPage from './features/pages/edit-page';
@@ -19,7 +19,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/:profileslug" element={<Profile />} />
+                <Route path="/:profileslug" element={<ViewProfile />} />
                 <Route path="/:profileslug/edit" element={<EditProfile />} />
                 <Route path="/:profileslug/page/add" element={<AddPage />} />
                 <Route path="/:profileslug/page/:pageslug" element={<Page />} />

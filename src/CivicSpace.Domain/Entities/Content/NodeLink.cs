@@ -5,19 +5,19 @@ namespace CivicSpace.Domain.Entities.Content
 {
     public class NodeLink : AuditableEntity, IAggregateRoot
     {
-        [ForeignKey("FromNode")]
-        public Guid FromNodeId { get; set; }
-        [ForeignKey("ToNode")]
-        public Guid ToNodeId { get; set; }
-        public virtual Node? FromNode { get; set; }
-        public virtual Node? ToNode { get; set; }
+        [ForeignKey("Node")]
+        public Guid NodeId { get; set; }
+        [ForeignKey("LinkedNode")]
+        public Guid LinkedNodeId { get; set; }
+        public virtual Node? Node { get; set; }
+        public virtual Node? LinkedNode { get; set; }
         public string? Type { get; set; }
         public int? Weight { get; set; }
 
-        public NodeLink(Guid fromNodeId, Guid toNodeId, string? type, int? weight)
+        public NodeLink(Guid nodeId, Guid linkedNodeId, string? type, int? weight)
         {
-            FromNodeId = fromNodeId;
-            ToNodeId = toNodeId;
+            NodeId = nodeId;
+            LinkedNodeId = linkedNodeId;
             Type = type;
             Weight = weight;
         }

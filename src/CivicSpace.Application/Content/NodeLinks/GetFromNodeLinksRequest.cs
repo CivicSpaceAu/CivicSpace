@@ -10,20 +10,20 @@ namespace CivicSpace.Application.Content.Nodes;
 
 public class GetFromNodeLinksRequest : PaginationFilter, IRequest<PaginationResponse<NodeLinkDto>>
 {
-    public Guid ToNodeId { get; set; }
+    public Guid LinkedNodeId { get; set; }
     public string Type { get; set; }
 
-    public GetFromNodeLinksRequest(Guid toNodeId, string type)
+    public GetFromNodeLinksRequest(Guid linkedNodeId, string type)
     {
-        ToNodeId = toNodeId;
+        LinkedNodeId = linkedNodeId;
         Type = type;
     }
 }
 
 public class FromNodeLinksSpec : Specification<NodeLink, PaginationResponse<NodeLinkDto>>, ISingleResultSpecification
 {
-    public FromNodeLinksSpec(Guid toNodeId, string type) =>
-        Query.Where(nl => nl.ToNodeId == toNodeId && (string.IsNullOrEmpty(type) || nl.Type == type));
+    public FromNodeLinksSpec(Guid linkedNodeId, string type) =>
+        Query.Where(nl => nl.LinkedNodeId == linkedNodeId && (string.IsNullOrEmpty(type) || nl.Type == type));
 }
 
 public class GetFromNodeLinksRequestHandler : IRequestHandler<GetFromNodeLinksRequest, PaginationResponse<NodeLinkDto>>
@@ -35,6 +35,6 @@ public class GetFromNodeLinksRequestHandler : IRequestHandler<GetFromNodeLinksRe
 
     public async Task<PaginationResponse<NodeLinkDto>> Handle(GetFromNodeLinksRequest request, CancellationToken cancellationToken) =>
         await _repository.GetBySpecAsync(
-            (ISpecification<NodeLink, PaginationResponse<NodeLinkDto>>)new FromNodeLinksSpec(request.ToNodeId, request.Type), cancellationToken)
-        ?? throw new NotFoundException(string.Format(_localizer["nodeLink.notfound"], request.ToNodeId));
+            (ISpecification<NodeLink, PaginationResponse<NodeLinkDto>>)new FromNodeLinksSpec(request.LinkedNodeId, request.Type), cancellationToken)
+        ?? throw new NotFoundException(string.Format(_localizer["nodeLink.notfound"], request.LinkedNodeId));
 }
