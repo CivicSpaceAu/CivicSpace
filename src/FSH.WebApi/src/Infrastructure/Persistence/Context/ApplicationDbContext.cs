@@ -25,8 +25,24 @@ public class ApplicationDbContext : BaseDbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<Node>()
+            .HasMany(n => n.CustomFields)
+            .WithOne(ncf => ncf.Node);
+
+        modelBuilder.Entity<Node>()
+            .HasMany(n => n.Links)
+            .WithOne(nl => nl.Node);
+
+        modelBuilder.Entity<Node>()
+            .HasMany(n => n.Reactions)
+            .WithOne(nr => nr.Node);
+
+        modelBuilder.Entity<Node>()
             .HasMany(n => n.Tags)
             .WithOne(nt => nt.Node);
+
+        modelBuilder.Entity<Node>()
+            .HasMany(n => n.Votes)
+            .WithOne(nv => nv.Node);
 
         modelBuilder.HasDefaultSchema(SchemaNames.Catalog);
     }

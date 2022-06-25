@@ -1,20 +1,52 @@
-﻿function EditProfile() {
+﻿import { useState } from 'react';
+import { emptyProfile, profileToNode } from '../types/profile';
+import { useGetTokenQuery } from '../../../services/token-api';
+import { useGetNodeQuery, useCreateNodeMutation } from '../../../services/node-api';
+
+export function EditProfile(props: any) {
+    const [description, setDescription] = useState("");
+
+    var tokenRequest = {
+        email: 'admin@root.com',
+        password: '123Pa$$word!'
+    };
+    const { currentData, isFetching, isError } = useGetTokenQuery(tokenRequest);
+
+    const [createNode, createNodeResult] = useCreateNodeMutation();
+    const handleSubmit = (event: any) => {
+        event.preventDefault();
+
+        alert('1');
+        var profile = emptyProfile();
+        alert('2');
+        profile.description = description;
+        alert('3');
+        var node = profileToNode(profile);
+
+        createNode({
+            token: currentData?.token,
+            node: node
+        });
+    }
+
     return (
         <div>
-        <h1>Edit Profile</h1>
-        <form>
-          <fieldset>
-            <div className="form-group row">
-              <label className="col-sm-2 col-form-label">Email</label>
-              <div className="col-sm-10">
-                            <input type="text" readOnly={true} className="form-control-plaintext" id="staticEmail" value="email@example.com" />
-              </div>
-            </div>
-            <div className="form-group">
-              <label className="form-label mt-4">Example textarea</label>
-                        <textarea className="form-control" id="exampleTextarea" spellCheck={false} />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <h1>Edit Profile</h1>
+            <form onSubmit={ handleSubmit }>
+                <fieldset>
+                    <div className="form-group">
+                        <textarea
+                            className="form-control"
+                            id="description"
+                            spellCheck={false}
+                            value={ description }
+                            onChange={ e => setDescription(e.target.value) }
+                        />
+                    </div>
+                    <button type="submit"
+                        className="btn btn-primary">
+                        Submit
+                    </button>
                 </fieldset>
             </form>
         </div>

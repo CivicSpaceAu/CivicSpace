@@ -1,9 +1,9 @@
-﻿import AuditableEntity from "./auditable-entity";
-import NodeCustomField from "./node-custom-field";
-import NodeLink from "./node-link";
-import NodeReaction from "./node-reaction";
-import NodeTag from "./node-tag";
-import NodeVote from "./node-vote";
+﻿import AuditableEntity from '../auditable-entity';
+import NodeCustomField from './node-custom-field';
+import NodeLink from './node-link';
+import NodeReaction from './node-reaction';
+import NodeTag from './node-tag';
+import NodeVote from './node-vote';
 
 export interface Node extends AuditableEntity {
     module: string;

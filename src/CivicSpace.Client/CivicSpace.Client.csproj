@@ -7,10 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ClientApp\build\**" />
     <Compile Remove="ClientApp\node_modules\**" />
+    <Content Remove="ClientApp\build\**" />
     <Content Remove="ClientApp\node_modules\**" />
+    <EmbeddedResource Remove="ClientApp\build\**" />
     <EmbeddedResource Remove="ClientApp\node_modules\**" />
+    <None Remove="ClientApp\build\**" />
     <None Remove="ClientApp\node_modules\**" />
+    <TypeScriptCompile Remove="ClientApp\build\**" />
+    <TypeScriptCompile Remove="ClientApp\node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>

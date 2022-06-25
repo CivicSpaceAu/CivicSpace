@@ -1,7 +1,7 @@
 ﻿import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Node } from '../types/node';
+import { Node } from '../types/nodes/node';
 
-var baseUrl = 'http://localhost:5000';
+var baseUrl = 'http://localhost:5000/api/v1';
 
 export const nodeApi = createApi({
     reducerPath: 'nodeApi',
@@ -11,10 +11,13 @@ export const nodeApi = createApi({
             query: (id) => `/nodes/${id}`,
         }), 
         createNode: builder.mutation({
-            query: (node) => ({
+            query: (createNodeRequest) => ({
                 url: '/nodes',
                 method: 'POST',
-                body: node
+                headers: {
+                    'token': createNodeRequest.token
+                },
+                body: createNodeRequest.node
                 })
         }),
     }),

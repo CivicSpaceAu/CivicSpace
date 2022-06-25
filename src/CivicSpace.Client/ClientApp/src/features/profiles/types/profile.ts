@@ -1,4 +1,4 @@
-﻿import { Node, emptyNode } from "../../../types/node";
+﻿import { Node, emptyNode } from "../../../types/nodes/node";
 
 export interface Profile {
     name: string;
