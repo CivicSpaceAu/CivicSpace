@@ -1,23 +1,28 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
 import './index.css';
+import { PublicClientApplication } from '@azure/msal-browser';
+import { Provider } from 'react-redux';
+import { MsalProvider } from '@azure/msal-react';
+import { msalConfig } from './auth-config';
+import App from './app';
+import { store } from './app/store';
+// import * as serviceWorker from './service-worker';
 
-const container = document.getElementById('root')!;
-const root = createRoot(container);
+const msalInstance = new PublicClientApplication(msalConfig);
 
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+ReactDOM.render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <MsalProvider instance={msalInstance}>
+                <App />
+            </MsalProvider>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+// serviceWorker.unregister();
