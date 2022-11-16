@@ -10,7 +10,7 @@ export function EditProfile(props: any) {
         email: 'admin@root.com',
         password: '123Pa$$word!'
     };
-    const { currentData, isFetching, isError } = useGetTokenQuery(tokenRequest);
+    //const { currentData, isFetching, isError } = useGetTokenQuery(tokenRequest);
 
     const [createNode, createNodeResult] = useCreateNodeMutation();
     const handleSubmit = (event: any) => {
@@ -24,7 +24,7 @@ export function EditProfile(props: any) {
         var node = profileToNode(profile);
 
         createNode({
-            token: currentData?.token,
+            //token: currentData?.token,
             node: node
         });
     }
