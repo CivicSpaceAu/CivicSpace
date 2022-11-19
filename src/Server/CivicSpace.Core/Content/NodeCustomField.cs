@@ -3,17 +3,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CivicSpace.Core.Content
 {
-    public class NodeCustomField
+    public class NodeCustomField : ModifiableAuditableEntity
     {
         [Key]
-        public Guid Id { get; protected set; } = default!;
+        public string Id { get; protected set; } = default!;
         [ForeignKey("Node")]
-        public Guid NodeId { get; set; } = default!;
+        public string NodeId { get; set; } = default!;
         public Node Node { get; set; } = default!;
         public string Key { get; set; }
         public string Value { get; set; }
 
-        public NodeCustomField(Guid nodeId, string key, string value)
+        public NodeCustomField(string nodeId, string key, string value) : base()
         {
             NodeId = nodeId;
             Key = key;

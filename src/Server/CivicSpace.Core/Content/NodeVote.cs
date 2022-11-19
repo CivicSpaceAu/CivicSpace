@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CivicSpace.Core.Content
 {
     // https://www.reddit.com/r/programming/comments/bg030/upvotedownvote_database_structure/
-    public class NodeVote
+    public class NodeVote : AuditableEntity
     {
         [ForeignKey("Node")]
         public string NodeId { get; set; }
@@ -12,7 +12,7 @@ namespace CivicSpace.Core.Content
         [Required]
         public short Score { get; set; }
 
-        public NodeVote(string nodeId, short score)
+        public NodeVote(string nodeId, short score) : base()
         {
             NodeId = nodeId;
             Score = score;

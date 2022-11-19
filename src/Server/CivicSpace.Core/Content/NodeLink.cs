@@ -2,7 +2,7 @@
 
 namespace CivicSpace.Core.Content
 {
-    public class NodeLink
+    public class NodeLink : AuditableEntity
     {
         [ForeignKey("Node")]
         public string NodeId { get; set; }
@@ -13,7 +13,7 @@ namespace CivicSpace.Core.Content
         public string Type { get; set; }
         public int Weight { get; set; }
 
-        public NodeLink(string nodeId, string linkedNodeId, string type, int? weight)
+        public NodeLink(string nodeId, string linkedNodeId, string type, int? weight) : base()
         {
             NodeId = nodeId;
             LinkedNodeId = linkedNodeId;
