@@ -10,7 +10,7 @@ namespace CivicSpace.Core.Content
         public string LinkedNodeId { get; set; }
         public virtual Node? Node { get; set; }
         public virtual Node? LinkedNode { get; set; }
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
         public int Weight { get; set; }
 
         public NodeLink(string nodeId, string linkedNodeId, string type, int? weight) : base()

@@ -5,13 +5,12 @@ namespace CivicSpace.Core.Content
 {
     public class NodeCustomField : ModifiableAuditableEntity
     {
-        [Key]
-        public string Id { get; protected set; } = default!;
         [ForeignKey("Node")]
-        public string NodeId { get; set; } = default!;
+        public string NodeId { get; set; } = string.Empty;
         public Node Node { get; set; } = default!;
-        public string Key { get; set; }
-        public string Value { get; set; }
+        [Required]
+        public string Key { get; set; } = string.Empty;
+        public string Value { get; set; } = string.Empty;
 
         public NodeCustomField(string nodeId, string key, string value) : base()
         {

@@ -5,19 +5,19 @@ namespace CivicSpace.Core.Content
 {
     public class Node : ModifiableAuditableEntity
     {
-        [Key]
-        public string Id { get; private set; }
         [Required]
-        public string Module { get; private set; }
+        public string Tenant { get; set; } = string.Empty;
         [Required]
-        public string Type { get; private set; }
-        public string Title { get; private set; }
-        public string Content { get; private set; }
-        public string Status { get; private set; }
-        public string Slug { get; private set; }
+        public string Module { get; set; } = string.Empty;
+        [Required]
+        public string Type { get; set; } = string.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
+        public string Slug { get; set; } = string.Empty;
 
-        public string ParentNodeId { get; private set; }
-        public string Path { get; private set; }
+        public string ParentNodeId { get; set; } = string.Empty;
+        public string Path { get; set; } = string.Empty;
 
         [ForeignKey("NodeCustomField")]
         public ICollection<NodeCustomField> CustomFields { get; set; } = default!;

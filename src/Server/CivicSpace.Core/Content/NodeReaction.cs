@@ -7,7 +7,7 @@ namespace CivicSpace.Core.Content
         [ForeignKey("Node")]
         public string NodeId { get; set; }
         public virtual Node? Node { get; set; }
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
 
         public NodeReaction(string nodeId, string type) : base()
         {

@@ -21,12 +21,21 @@ namespace CivicSpace.Data.Repositories
             _configuration = configuration;
         }
 
-        public async Task<Node> GetNodeAsync(string id)
+        public async Task<Node> GetAsync(string id)
         {
             return await _dbContext.Nodes.FirstOrDefaultAsync(n => n.Id == id);
         }
 
-        public async Task<IEnumerable<Node>> GetNodesByParentIdAsync(string parentNodeId)
+        public async Task<IEnumerable<Node>> GetRootAsync(string tenant, string module, string type)
+        {
+            return await _dbContext.Nodes.Where(n => 
+                (n.Tenant == tenant) &&
+                (n.Module == module) &&
+                (n.Type == type) &&
+                (n.ParentNodeId == "")).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Node>> GetChildrenAsync(string parentNodeId)
         {
             return await _dbContext.Nodes.Where(n => n.ParentNodeId == parentNodeId).ToListAsync();
         }

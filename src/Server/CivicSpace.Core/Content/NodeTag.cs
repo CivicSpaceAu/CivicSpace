@@ -7,7 +7,7 @@ namespace CivicSpace.Core.Content
         [ForeignKey("Node")]
         public string NodeId { get; set; } = default!;
         public Node Node { get; set; } = default!;
-        public string Tag { get; set; }
+        public string Tag { get; set; } = string.Empty;
 
         public NodeTag(string nodeId, string tag) : base()
         {
