@@ -1,5 +1,5 @@
-using CivicSpace.Data.Interfaces;
 using CivicSpace.Data.Repositories;
+using CivicSpace.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

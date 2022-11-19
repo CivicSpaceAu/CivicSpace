@@ -1,5 +1,5 @@
 using CivicSpace.Core.Content;
-using CivicSpace.Data.Interfaces;
+using CivicSpace.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -35,9 +35,11 @@ namespace CivicSpace.Data.Repositories
                 (n.ParentNodeId == "")).ToListAsync();
         }
 
-        public async Task<IEnumerable<Node>> GetChildrenAsync(string parentNodeId)
+        public async Task<IEnumerable<Node>> GetChildrenAsync(string parentNodeId, string type)
         {
-            return await _dbContext.Nodes.Where(n => n.ParentNodeId == parentNodeId).ToListAsync();
+            return await _dbContext.Nodes.Where(n => 
+                (n.ParentNodeId == parentNodeId) &&
+                (n.Type == type)).ToListAsync();
         }
 
         public async Task AddNode(Node node)
