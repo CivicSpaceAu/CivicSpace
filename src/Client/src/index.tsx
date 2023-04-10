@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import App from './app';
+
 import { PublicClientApplication } from '@azure/msal-browser';
 import { Provider } from 'react-redux';
 import { MsalProvider } from '@azure/msal-react';
 import { msalConfig } from './auth-config';
-import App from './app';
 import { store } from './app/store';
 // import * as serviceWorker from './service-worker';
 
