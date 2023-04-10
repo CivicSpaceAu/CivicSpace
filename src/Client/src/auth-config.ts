@@ -1,35 +1,12 @@
 ﻿import { LogLevel } from "@azure/msal-browser";
-
-/**
- * To learn more about user flows, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/user-flow-overview
- * To learn more about custom policies, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview
- */
-export const b2cPolicies = {
-    names: {
-        signUpSignIn: "B2C_1_signupsignin",
-        forgotPassword: "B2C_1_forgotpassword",
-        editProfile: "B2C_1_editprofile"
-    },
-    authorities: {
-        signUpSignIn: {
-            authority: "https://banicob2c.b2clogin.com/banicob2c.onmicrosoft.com/B2C_1_signupsignin",
-        },
-        forgotPassword: {
-            authority: "https://banicob2c.b2clogin.com/banicob2c.onmicrosoft.com/B2C_1_forgotpassword",
-        },
-        editProfile: {
-            authority: "https://banicob2c.b2clogin.com/banicob2c.onmicrosoft.com/B2C_1_editprofile"
-        }
-    },
-    authorityDomain: "banicob2c.b2clogin.com"
-}
+import { b2cPolicies } from "./policies";
 
 /**
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
  */
 export const msalConfig = {
     auth: {
-        clientId: "6944efb1-2340-4d64-a510-0f76d940a69c",
+        clientId: "897394a2-bc62-4f91-84f5-9e1348620897",
         authority: b2cPolicies.authorities.signUpSignIn.authority,
         knownAuthorities: [b2cPolicies.authorityDomain],
         redirectUri: "/",
@@ -71,5 +48,5 @@ export const msalConfig = {
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
 export const loginRequest = {
-    scopes: [""]
+    scopes: ["node.write"]
 };
