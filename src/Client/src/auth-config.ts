@@ -48,7 +48,7 @@ export const msalConfig = {
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
 export const loginRequest = {
-    scopes: ["node.write"]
+    scopes: ["https://civicspaceb2c.onmicrosoft.com/civicspace-web-api/node.write"]
 };
 
 /**
