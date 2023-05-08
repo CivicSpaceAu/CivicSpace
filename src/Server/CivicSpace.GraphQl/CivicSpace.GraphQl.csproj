@@ -7,12 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Queries\" />
     <Folder Include="Resolvers\" />
-    <Folder Include="Types\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="GraphQL" Version="7.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CivicSpace.Core\CivicSpace.Core.csproj" />
   </ItemGroup>
 
 </Project>
