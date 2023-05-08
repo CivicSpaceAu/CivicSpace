@@ -1,9 +1,10 @@
 ﻿using CivicSpace.Core.Content;
 using CivicSpace.Data.Repositories.Interfaces;
+using CivicSpace.Services.Content.Interfaces;
 
 namespace CivicSpace.Services.Content
 {
-    public class NodeService
+    public class NodeService : INodeService
     {
         private readonly INodeRepository _nodeRepository;
 
@@ -22,19 +23,19 @@ namespace CivicSpace.Services.Content
             return await _nodeRepository.GetRootAsync(tenant, module, type);
         }
 
-        public async Task<IEnumerable<Node>> GetChildrenAsync(string parentNodeId, string type)
+        public async Task<IEnumerable<Node>> GetChildrenAsync(string id, string type)
         {
-            return await _nodeRepository.GetChildrenAsync(parentNodeId, type);
+            return await _nodeRepository.GetChildrenAsync(id, type);
         }
 
-        public async Task AddAsync(Node node)
+        public async Task<Node> AddAsync(Node node)
         {
-            await _nodeRepository.CreateAsync(node);
+            return await _nodeRepository.CreateAsync(node);
         }
 
-        public async Task UpdateAsync(Node node)
+        public async Task<Node> UpdateAsync(Node node)
         {
-            await _nodeRepository.UpdateAsync(node.Id, node);
+            return await _nodeRepository.UpdateAsync(node.Id, node);
         }
 
         public async Task DeleteAsync(string id)

@@ -25,21 +25,21 @@ namespace CivicSpace.Api.Controllers
         }
 
         [HttpPost]
-        public async Task Post([FromBody] Node node)
+        public async Task PostAsync([FromBody] Node node)
         {
-            await _nodeService.AddNode(node);
+            await _nodeService.AddAsync(node);
         }
 
         [HttpPut("{id}")]
-        public async void Put(string id, [FromBody] Node node)
+        public async Task PutAsync(string id, [FromBody] Node node)
         {
-            await _nodeService.UpdateNode(node);
+            await _nodeService.UpdateAsync(node);
         }
 
         [HttpDelete("{id}")]
-        public async void Delete(string id)
+        public async Task DeleteAsync(string id)
         {
-            await _nodeService.DeleteNode(id);
+            await _nodeService.DeleteAsync(id);
         }
     }
 }

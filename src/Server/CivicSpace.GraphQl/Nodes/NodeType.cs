@@ -1,11 +1,11 @@
 ﻿using CivicSpace.Core.Content;
 using GraphQL.Types;
 
-namespace CivicSpace.GraphQl.Types
+namespace CivicSpace.GraphQl.Nodes
 {
     public class NodeType : ObjectGraphType<Node>
     {
-        public NodeType() 
+        public NodeType()
         {
             Field(n => n.Id);
             Field(n => n.Tenant);
@@ -18,5 +18,5 @@ namespace CivicSpace.GraphQl.Types
             Field(n => n.ParentNodeId);
             Field(n => n.Path);
         }
-}
+    }
 }

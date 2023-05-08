@@ -12,8 +12,8 @@ namespace CivicSpace.Services.Content.Interfaces
         Task<Node> GetAsync(string id);
         Task<IEnumerable<Node>> GetRootAsync(string tenant, string module, string type);
         Task<IEnumerable<Node>> GetChildrenAsync(string parentNodeId, string type);
-        Task AddNode(Node node);
-        Task UpdateNode(Node node);
-        Task DeleteNode(string id);
+        Task<Node> AddAsync(Node node);
+        Task<Node> UpdateAsync(Node node);
+        Task DeleteAsync(string id);
     }
 }

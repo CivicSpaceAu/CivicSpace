@@ -6,10 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CivicSpace.Data
 {
-    public class DataStartup
-  {
-    public void ConfigureServices(IConfiguration configuration, IServiceCollection services)
+    public static class DataStartup
     {
+        public static void AddData(this IServiceCollection services, IConfiguration configuration)
+        {
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseCosmos(
@@ -20,15 +20,6 @@ namespace CivicSpace.Data
             });
             services.AddOptions();
             services.AddScoped<INodeRepository, NodeRepository>();
+        }
     }
-
-    //public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    //{
-    //  using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-    //  {
-    //    var context = serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
-    //    context.Database.Migrate();
-    //  }
-    //}
-  }
 }

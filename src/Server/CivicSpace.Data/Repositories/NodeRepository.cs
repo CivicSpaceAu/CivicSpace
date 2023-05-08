@@ -2,9 +2,6 @@ using CivicSpace.Core.Content;
 using CivicSpace.Data.Repositories.Interfaces;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
-using Microsoft.Azure.Cosmos.Serialization.HybridRow;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System.Linq.Expressions;
 
 namespace CivicSpace.Data.Repositories
