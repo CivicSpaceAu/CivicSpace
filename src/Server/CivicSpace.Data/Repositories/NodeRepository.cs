@@ -1,68 +1,84 @@
 using CivicSpace.Core.Content;
 using CivicSpace.Data.Repositories.Interfaces;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos.Linq;
+using Microsoft.Azure.Cosmos.Serialization.HybridRow;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Linq.Expressions;
 
 namespace CivicSpace.Data.Repositories
 {
     public class NodeRepository : INodeRepository
     {
-        public readonly AppDbContext _dbContext;
-        private readonly IConfiguration _configuration;
+        public readonly Container _container;
 
         private int _maxPageSize = 40;
 
-        public NodeRepository(
-            AppDbContext dbContext,
-            IConfiguration configuration
-        )
+        public NodeRepository(CosmosClient cosmosClient, string databaseName, string containerName)
         {
-            _dbContext = dbContext;
-            _configuration = configuration;
+            _container = cosmosClient.GetContainer(databaseName, containerName);
         }
 
-        public async Task<Node> GetAsync(string id)
+        public async Task<IEnumerable<Node>> GetByAsync(Expression<Func<Node, bool>> predicate)
         {
-            return await _dbContext.Nodes.FirstOrDefaultAsync(n => n.Id == id);
+            var queryable = _container.GetItemLinqQueryable<Node>().Where(predicate);
+            var iterator = queryable.ToFeedIterator();
+            var results = new List<Node>();
+
+            while (iterator.HasMoreResults)
+            {
+                var response = await iterator.ReadNextAsync();
+                results.AddRange(response);
+            }
+
+            return results;
+        }
+
+        public async Task<Node> GetByIdAsync(string id)
+        {
+            try
+            {
+                var response = await _container.ReadItemAsync<Node>(id, new PartitionKey(id));
+                return response.Resource;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
         public async Task<IEnumerable<Node>> GetRootAsync(string tenant, string module, string type)
         {
-            return await _dbContext.Nodes.Where(n => 
+            return await GetByAsync(n =>
                 (n.Tenant == tenant) &&
                 (n.Module == module) &&
                 (n.Type == type) &&
-                (n.ParentNodeId == "")).ToListAsync();
+                (n.ParentNodeId == ""));
         }
 
-        public async Task<IEnumerable<Node>> GetChildrenAsync(string parentNodeId, string type)
+        public async Task<IEnumerable<Node>> GetChildrenAsync(string id, string type)
         {
-            return await _dbContext.Nodes.Where(n => 
-                (n.ParentNodeId == parentNodeId) &&
-                (n.Type == type)).ToListAsync();
+            return await GetByAsync(n =>
+                (n.ParentNodeId == id) &&
+                (n.Type == type));
         }
 
-        public async Task AddNode(Node node)
+        public async Task<Node> CreateAsync(Node node)
         {
-            _dbContext.Nodes.Add(node);
-            await _dbContext.SaveChangesAsync();
+            var response = await _container.CreateItemAsync(node);
+            return response.Resource;
         }
 
-        public async Task UpdateNode(Node node)
+        public async Task<Node> UpdateAsync(string id, Node node)
         {
-            _dbContext.Nodes.Update(node);
-            await _dbContext.SaveChangesAsync();
+            var response = await _container.ReplaceItemAsync(node, id, new PartitionKey(id));
+            return response.Resource;
         }
 
-        public async Task DeleteNode(string id)
+        public async Task DeleteAsync(string id)
         {
-            var itemToRemove = _dbContext.Nodes.SingleOrDefault(x => x.Id == id);
-
-            if (itemToRemove != null)
-            {
-                _dbContext.Nodes.Remove(itemToRemove);
-                await _dbContext.SaveChangesAsync();
-            }
+            await _container.DeleteItemAsync<Node>(id, new PartitionKey(id));
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CivicSpace.Services.Content
 
         public async Task<Node> GetAsync(string id)
         {
-            return await _nodeRepository.GetAsync(id);
+            return await _nodeRepository.GetByIdAsync(id);
         }
 
         public async Task<IEnumerable<Node>> GetRootAsync(string tenant, string module, string type)
@@ -27,19 +27,19 @@ namespace CivicSpace.Services.Content
             return await _nodeRepository.GetChildrenAsync(parentNodeId, type);
         }
 
-        public async Task AddNode(Node node)
+        public async Task AddAsync(Node node)
         {
-            await _nodeRepository.AddNode(node);
+            await _nodeRepository.CreateAsync(node);
         }
 
-        public async Task UpdateNode(Node node)
+        public async Task UpdateAsync(Node node)
         {
-            await _nodeRepository.UpdateNode(node);
+            await _nodeRepository.UpdateAsync(node.Id, node);
         }
 
-        public async Task DeleteNode(string id)
+        public async Task DeleteAsync(string id)
         {
-            await _nodeRepository.DeleteNode(id);
+            await _nodeRepository.DeleteAsync(id);
         }
     }
 }
