@@ -1,10 +1,10 @@
-﻿using CivicSpace.Core.Content;
+﻿using CivicSpace.Api.Types;
+using CivicSpace.Core.Content;
 using CivicSpace.Data.Content.Repositories.Interfaces;
-using CivicSpace.GraphQl.Types;
 using GraphQL;
 using GraphQL.Types;
 
-namespace CivicSpace.GraphQl
+namespace CivicSpace.Api
 {
     public class AppMutation : ObjectGraphType
     {

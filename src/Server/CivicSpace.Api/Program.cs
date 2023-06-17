@@ -1,5 +1,5 @@
 using CivicSpace.Data;
-using CivicSpace.GraphQl;
+using GraphQL;
 
 namespace CivicSpace.Api
 {
@@ -14,7 +14,12 @@ namespace CivicSpace.Api
             var configuration = configurationBuilder.Build();
             builder.Services.AddSingleton<IConfigurationRoot>(configuration);
             builder.Services.ConfigureDataServices(configuration);
-            builder.Services.ConfigureGraphQlServices(configuration);
+            builder.Services.AddGraphQL(b => b
+                //.AddHttpMiddleware<ISchema>()
+                //.AddUserContextBuilder(httpContext => new GraphQLUserContext { User = httpContext.User })
+                .AddSystemTextJson()
+                .AddSchema<AppSchema>()
+                .AddGraphTypes(typeof(AppSchema).Assembly));
             builder.Services.AddControllers();
 
             var app = builder.Build();

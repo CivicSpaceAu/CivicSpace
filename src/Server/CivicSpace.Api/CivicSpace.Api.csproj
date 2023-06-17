@@ -14,7 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CivicSpace.Core\CivicSpace.Core.csproj" />
     <ProjectReference Include="..\CivicSpace.Data\CivicSpace.Data.csproj" />
-    <ProjectReference Include="..\CivicSpace.GraphQl\CivicSpace.GraphQl.csproj" />
   </ItemGroup>
 
 </Project>

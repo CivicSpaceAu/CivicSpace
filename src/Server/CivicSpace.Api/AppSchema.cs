@@ -1,7 +1,6 @@
 ﻿using GraphQL.Types;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace CivicSpace.GraphQl
+namespace CivicSpace.Api
 {
     public class AppSchema : Schema
     {

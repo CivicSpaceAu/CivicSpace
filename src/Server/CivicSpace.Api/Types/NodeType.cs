@@ -1,13 +1,14 @@
 ﻿using CivicSpace.Core.Content;
 using GraphQL.Types;
 
-namespace CivicSpace.Api.Nodes
+namespace CivicSpace.Api.Types
 {
     public class NodeType : ObjectGraphType<Node>
     {
         public NodeType()
         {
-            Field(n => n.Id, nullable: true);
+            Field(n => n.Id, type: typeof(IdGraphType), nullable: true)
+                .Description("Id property of node object.");
             Field(n => n.Tenant, nullable: true);
             Field(n => n.Module, nullable: true);
             Field(n => n.Type, nullable: true);
