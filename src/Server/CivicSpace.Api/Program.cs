@@ -1,5 +1,5 @@
 using CivicSpace.Data;
-using CivicSpace.Services;
+using CivicSpace.GraphQl;
 
 namespace CivicSpace.Api
 {
@@ -13,20 +13,11 @@ namespace CivicSpace.Api
                 .AddEnvironmentVariables();
             var configuration = configurationBuilder.Build();
             builder.Services.AddSingleton<IConfigurationRoot>(configuration);
-            builder.Services.AddData(configuration);
-            builder.Services.AddServices();
+            builder.Services.ConfigureDataServices(configuration);
+            builder.Services.ConfigureGraphQlServices(configuration);
             builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer(); // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
 
             app.UseHttpsRedirection();
 

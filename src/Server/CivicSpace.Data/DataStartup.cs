@@ -1,5 +1,7 @@
-using CivicSpace.Data.Repositories;
-using CivicSpace.Data.Repositories.Interfaces;
+using CivicSpace.Data.Content.Repositories;
+using CivicSpace.Data.Content.Repositories.Interfaces;
+using CivicSpace.Data.Content.Services.Interfaces;
+using CivicSpace.Data.Content.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,7 +10,7 @@ namespace CivicSpace.Data
 {
     public static class DataStartup
     {
-        public static void AddData(this IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureDataServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(options =>
             {
@@ -20,6 +22,7 @@ namespace CivicSpace.Data
             });
             services.AddOptions();
             services.AddScoped<INodeRepository, NodeRepository>();
+            services.AddScoped<INodeService, NodeService>();
         }
     }
 }

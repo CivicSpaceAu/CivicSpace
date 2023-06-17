@@ -8,12 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="GraphQL" Version="7.4.1" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="7.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CivicSpace.Services\CivicSpace.Services.csproj" />
+    <ProjectReference Include="..\CivicSpace.Core\CivicSpace.Core.csproj" />
+    <ProjectReference Include="..\CivicSpace.Data\CivicSpace.Data.csproj" />
+    <ProjectReference Include="..\CivicSpace.GraphQl\CivicSpace.GraphQl.csproj" />
   </ItemGroup>
 
 </Project>
