@@ -10,6 +10,7 @@ namespace CivicSpace.Api
             var builder = WebApplication.CreateBuilder(args);
             var configurationBuilder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             var configuration = configurationBuilder.Build();
             builder.Services.AddSingleton<IConfigurationRoot>(configuration);
