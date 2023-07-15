@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CivicSpace.Core.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CivicSpace.Core.Content
 {
-    public class NodeCustomField : ModifiableAuditableEntity
+    public class NodeCustomField : ModifiableEntity
     {
         [ForeignKey("Node")]
         public string NodeId { get; set; } = string.Empty;

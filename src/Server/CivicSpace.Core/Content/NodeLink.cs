@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using CivicSpace.Core.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CivicSpace.Core.Content
 {

@@ -1,48 +1,29 @@
 using CivicSpace.Core.Content;
 using CivicSpace.Data.Content.Repositories.Interfaces;
-using Microsoft.Azure.Cosmos;
-using Microsoft.Azure.Cosmos.Linq;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace CivicSpace.Data.Content.Repositories
 {
     public class NodeRepository : INodeRepository
     {
-        public readonly Container _container;
+        private readonly AppDbContext _dbContext;
 
         private int _maxPageSize = 40;
 
-        public NodeRepository(CosmosClient cosmosClient, string databaseName, string containerName)
+        public NodeRepository(AppDbContext dbContext)
         {
-            _container = cosmosClient.GetContainer(databaseName, containerName);
+            _dbContext = dbContext;
         }
 
         public async Task<IEnumerable<Node>> GetByAsync(Expression<Func<Node, bool>> predicate)
         {
-            var queryable = _container.GetItemLinqQueryable<Node>().Where(predicate);
-            var iterator = queryable.ToFeedIterator();
-            var results = new List<Node>();
-
-            while (iterator.HasMoreResults)
-            {
-                var response = await iterator.ReadNextAsync();
-                results.AddRange(response);
-            }
-
-            return results;
+            return await _dbContext.Nodes.Where(predicate).ToListAsync();
         }
 
         public async Task<Node> GetByIdAsync(string id)
         {
-            try
-            {
-                var response = await _container.ReadItemAsync<Node>(id, new PartitionKey(id));
-                return response.Resource;
-            }
-            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                return null;
-            }
+            return await _dbContext.Nodes.FindAsync(id);
         }
 
         public async Task<IEnumerable<Node>> GetRootAsync(string tenant, string module, string type)
@@ -65,12 +46,9 @@ namespace CivicSpace.Data.Content.Repositories
         {
             try
             {
-                var response = await _container.CreateItemAsync(node);
-                return response.StatusCode == System.Net.HttpStatusCode.Created;
-            }
-            catch (CosmosException ex)
-            {
-                return false;
+                _dbContext.Nodes.Add(node);
+                await _dbContext.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {
@@ -82,12 +60,11 @@ namespace CivicSpace.Data.Content.Repositories
         {
             try
             {
-                var response = await _container.ReplaceItemAsync(node, id, new PartitionKey(id));
-                return response.StatusCode == System.Net.HttpStatusCode.OK;
-            }
-            catch (CosmosException ex)
-            {
-                return false;
+                var originalNode = await _dbContext.Nodes.FindAsync(id);
+                originalNode.Copy(node);
+                _dbContext.Nodes.Update(originalNode);
+                await _dbContext.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {
@@ -99,12 +76,10 @@ namespace CivicSpace.Data.Content.Repositories
         {
             try
             {
-                var response = await _container.DeleteItemAsync<Node>(id, new PartitionKey(id));
-                return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-            }
-            catch (CosmosException ex)
-            {
-                return false;
+                var node = await _dbContext.Nodes.FindAsync(id);
+                _dbContext.Nodes.Remove(node);
+                await _dbContext.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {

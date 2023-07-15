@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CivicSpace.Core.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CivicSpace.Core.Content
 {
-    public class Node : ModifiableAuditableEntity
+    public class Node : ModifiableEntity
     {
         [Required]
         public string Tenant { get; set; } = string.Empty;
@@ -42,6 +43,19 @@ namespace CivicSpace.Core.Content
         //    return this;
         //}
 
+        public void Copy(Node node)
+        {
+            Tenant = node.Tenant;
+            Module = node.Module;
+            Type = node.Type;
+            Title = node.Title;
+            Content = node.Content;
+            Status = node.Status;
+            Slug = node.Slug;
+            ParentNodeId = node.ParentNodeId;
+            Path = node.Path;
+        }
+            
         private void SetTags(string tags)
         {
             Tags.Clear();

@@ -8,7 +8,6 @@ namespace CivicSpace.Data
     public class AppDbContext : DbContext
     {
         private readonly IConfigurationRoot _configuration;
-        private readonly CosmosClient _cosmosClient;
 
         public AppDbContext(IConfigurationRoot configuration)
         {
