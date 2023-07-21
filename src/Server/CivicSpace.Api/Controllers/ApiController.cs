@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CivicSpace.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ApiController : ControllerBase
     {
