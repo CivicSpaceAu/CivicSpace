@@ -3,27 +3,19 @@ import { Node } from '../types/nodes/node';
 
 var baseUrl = 'http://localhost:5000/api';
 
-export const nodeApi = createApi({
+export const api = createApi({
     reducerPath: 'nodeApi',
     baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
     endpoints: (builder) => ({
-        getNode: builder.query<Node, string>({
-            query: (id) => `/nodes/${id}`,
+        graphqlQuery: builder.query({
+            query: (variables) => ({
+                document: graphql``
+            })
         }), 
-        createNode: builder.mutation({
-            query: (createNodeRequest) => ({
-                url: '/nodes',
-                method: 'POST',
-                headers: {
-                    'token': createNodeRequest.token
-                },
-                body: createNodeRequest.node
-                })
-        }),
     }),
 });
 
 export const {
     useGetNodeQuery,
     useCreateNodeMutation
-} = nodeApi;
+} = api;

@@ -8,16 +8,20 @@ import { Provider } from 'react-redux';
 import { MsalProvider } from '@azure/msal-react';
 import { msalConfig } from './auth-config';
 import { store } from './app/store';
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from './apollo-client';
 // import * as serviceWorker from './service-worker';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
 ReactDOM.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <MsalProvider instance={msalInstance}>
-                <App />
-            </MsalProvider>
+        <Provider store = {store}>
+            <ApolloProvider client={apolloClient}>
+                <MsalProvider instance={msalInstance}>
+                    <App />
+                </MsalProvider>
+            </ApolloProvider>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
