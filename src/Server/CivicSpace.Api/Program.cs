@@ -31,6 +31,8 @@ namespace CivicSpace.Api
 
             app.MapControllers();
 
+            app.UseGraphQLGraphiQL();
+
             app.Run();
         }
     }
