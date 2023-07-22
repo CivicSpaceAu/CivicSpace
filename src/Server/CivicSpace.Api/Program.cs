@@ -31,6 +31,8 @@ namespace CivicSpace.Api
 
             app.MapControllers();
 
+            app.UseGraphQL<AppSchema>("/graphql");
+
             app.UseGraphQLGraphiQL();
 
             app.Run();

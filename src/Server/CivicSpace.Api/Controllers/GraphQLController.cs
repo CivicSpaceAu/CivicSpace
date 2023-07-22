@@ -9,18 +9,18 @@ namespace CivicSpace.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ApiController : ControllerBase
+    public class GraphQLController : ControllerBase
     {
         private readonly IDocumentExecuter _documentExecuter;
         private readonly ISchema _schema;
 
-        public ApiController(IDocumentExecuter documentExecuter, ISchema schema)
+        public GraphQLController(IDocumentExecuter documentExecuter, ISchema schema)
         {
             _documentExecuter = documentExecuter;
             _schema = schema;
         }
 
-        [HttpPost("graphql")]
+        [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] GraphQLRequest request)
         {
             var startTime = DateTime.UtcNow;
