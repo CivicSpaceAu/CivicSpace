@@ -17,13 +17,11 @@ namespace CivicSpace.Api
             var configuration = configurationBuilder.Build();
             builder.Services.AddSingleton<IConfigurationRoot>(configuration);
             builder.Services.ConfigureDataServices(configuration);
-            builder.Services.AddSingleton<ISchema, AppSchema>(services => 
-                new AppSchema(new SelfActivatingServiceProvider(services)));
             builder.Services.AddGraphQL(b => b
                 //.AddHttpMiddleware<ISchema>()
                 //.AddUserContextBuilder(httpContext => new GraphQLUserContext { User = httpContext.User })
                 .AddSystemTextJson()
-                .AddSchema<AppSchema>()
+                .AddSchema(services => new AppSchema(new SelfActivatingServiceProvider(services)))
                 .AddGraphTypes(typeof(AppSchema).Assembly));
             builder.Services.AddControllers();
             var app = builder.Build();

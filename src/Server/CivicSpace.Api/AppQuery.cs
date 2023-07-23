@@ -7,14 +7,18 @@ namespace CivicSpace.Api
 {
     public class AppQuery : ObjectGraphType
     {
+        private readonly INodeRepository _nodeRepository;
+
         public AppQuery(INodeRepository nodeRepository)
         {
+            _nodeRepository = nodeRepository;
+
             Name = nameof(AppQuery);
 
             Field<ListGraphType<NodeType>>("node")
                 .Argument<StringGraphType>("id", "node id")
                 .ResolveAsync(async context =>
-                    await nodeRepository.GetByIdAsync(context.GetArgument<string>("id")));
+                    await _nodeRepository.GetByIdAsync(context.GetArgument<string>("id")));
         }
     }
 }
