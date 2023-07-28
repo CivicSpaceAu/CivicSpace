@@ -1,6 +1,5 @@
 using CivicSpace.Data;
 using GraphQL;
-using GraphQL.MicrosoftDI;
 using GraphQL.Types;
 
 namespace CivicSpace.Api
@@ -21,14 +20,16 @@ namespace CivicSpace.Api
                 //.AddHttpMiddleware<ISchema>()
                 //.AddUserContextBuilder(httpContext => new GraphQLUserContext { User = httpContext.User })
                 .AddSystemTextJson()
-                .AddSchema(services => new AppSchema(new SelfActivatingServiceProvider(services)))
+                .AddErrorInfoProvider(opt => opt.ExposeExceptionStackTrace = true)
+                .AddSchema<AppSchema>()
                 .AddGraphTypes(typeof(AppSchema).Assembly));
             builder.Services.AddControllers();
+
             var app = builder.Build();
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
-            app.UseGraphQL<AppSchema>("/graphql");
+            app.UseGraphQL("/graphql");
             app.UseGraphQLGraphiQL();
             app.Run();
         }
