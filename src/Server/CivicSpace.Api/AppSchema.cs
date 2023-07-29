@@ -4,10 +4,10 @@ namespace CivicSpace.Api
 {
     public class AppSchema : Schema
     {
-        public AppSchema(IServiceProvider provider) : base(provider)
+        public AppSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            Query = provider.GetRequiredService<AppQuery>();
-            Mutation = provider.GetRequiredService<AppMutation>();
+            Query = serviceProvider.GetRequiredService<AppQuery>();
+            Mutation = serviceProvider.GetRequiredService<AppMutation>();
         }
     }
 }

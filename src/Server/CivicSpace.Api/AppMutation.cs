@@ -8,13 +8,14 @@ namespace CivicSpace.Api
 {
     public class AppMutation : ObjectGraphType
     {
-        public AppMutation(INodeRepository nodeRepository) 
+        public AppMutation() 
         {
             Field<BooleanGraphType>("createNode")
                 .Argument<NonNullGraphType<NodeInputType>>("node")
                 .ResolveAsync(async context =>
                 {
                     var node = context.GetArgument<Node>("node");
+                    var nodeRepository = context.RequestServices.GetRequiredService<INodeRepository>();
                     return await nodeRepository.CreateAsync(node);
                 });
 
@@ -25,6 +26,7 @@ namespace CivicSpace.Api
                 {
                     var id = context.GetArgument<string>("id");
                     var node = context.GetArgument<Node>("node");
+                    var nodeRepository = context.RequestServices.GetRequiredService<INodeRepository>();
                     return await nodeRepository.UpdateAsync(id, node);
                 });
 
@@ -33,6 +35,7 @@ namespace CivicSpace.Api
                 .ResolveAsync(async context =>
                 {
                     var id = context.GetArgument<string>("id");
+                    var nodeRepository = context.RequestServices.GetRequiredService<INodeRepository>();
                     return await nodeRepository.DeleteAsync(id);
                 });
         }
