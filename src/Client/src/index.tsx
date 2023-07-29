@@ -8,9 +8,13 @@ import { Provider } from 'react-redux';
 import { MsalProvider } from '@azure/msal-react';
 import { msalConfig } from './auth-config';
 import { store } from './app/store';
-import { ApolloProvider } from '@apollo/client';
-import apolloClient from './apollo-client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 // import * as serviceWorker from './service-worker';
+
+const apolloClient = new ApolloClient({
+    uri: 'http://localhost:5101/',
+    cache: new InMemoryCache(),
+});
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
