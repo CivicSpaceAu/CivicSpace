@@ -20,8 +20,9 @@ namespace CivicSpace.Core.Content
         public string ParentNodeId { get; set; } = string.Empty;
         public string Path { get; set; } = string.Empty;
 
-        [ForeignKey("NodeCustomField")]
-        public ICollection<NodeCustomField> CustomFields { get; set; } = default!;
+        [NotMapped]
+        public string MetadataJson { get; set; } = string.Empty;
+
         [ForeignKey("NodeLink")]
         public ICollection<NodeLink> Links { get; set; } = default!;
         [ForeignKey("NodeReaction")]
