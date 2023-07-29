@@ -1,6 +1,6 @@
-﻿using CivicSpace.Core.Content;
+﻿using CivicSpace.Core;
 
-namespace CivicSpace.Data.Content.Services.Interfaces
+namespace CivicSpace.Data.Interfaces
 {
     public interface INodeService
     {

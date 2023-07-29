@@ -1,8 +1,7 @@
 ﻿using CivicSpace.Core.Entities;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CivicSpace.Core.Content
+namespace CivicSpace.Core
 {
     public class Node : ModifiableEntity
     {
@@ -12,25 +11,19 @@ namespace CivicSpace.Core.Content
         public string Module { get; set; } = string.Empty;
         [Required]
         public string Type { get; set; } = string.Empty;
+        public string ParentId { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
         public string Slug { get; set; } = string.Empty;
-
-        public string ParentNodeId { get; set; } = string.Empty;
         public string Path { get; set; } = string.Empty;
-
-        [NotMapped]
-        public string MetadataJson { get; set; } = string.Empty;
-
-        [ForeignKey("NodeLink")]
-        public ICollection<NodeLink> Links { get; set; } = default!;
-        [ForeignKey("NodeReaction")]
-        public ICollection<NodeReaction> Reactions { get; set; } = default!;
-        [ForeignKey("NodeTag")]
-        public ICollection<NodeTag> Tags { get; set; } = default!;
-        [ForeignKey("NodeVote")]
-        public ICollection<NodeVote> Votes { get; set; } = default!;
+        public List<string> Tags { get; set; }
+        public Dictionary<string, string> Links { get; set; }
+        public Dictionary<string, string> Reactions { get; set; }
+        public Dictionary<string, int> Votes { get; set; }
+        public int TotalVotes { get; set; }
+        public int Score { get; set; }
+        public string Metadata { get; set; } = string.Empty;
 
         public Node() : base() { }
 
@@ -53,18 +46,6 @@ namespace CivicSpace.Core.Content
             Content = node.Content;
             Status = node.Status;
             Slug = node.Slug;
-            ParentNodeId = node.ParentNodeId;
-            Path = node.Path;
-        }
-            
-        private void SetTags(string tags)
-        {
-            Tags.Clear();
-            if (!string.IsNullOrEmpty(tags))
-                foreach (string tag in tags.Split(' '))
-                {
-                    Tags.Add(new NodeTag(Id, tag));
-                }
         }
     }
 }

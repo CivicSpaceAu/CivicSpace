@@ -1,9 +1,9 @@
-using CivicSpace.Core.Content;
-using CivicSpace.Data.Content.Repositories.Interfaces;
+using CivicSpace.Core;
+using CivicSpace.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace CivicSpace.Data.Content.Repositories
+namespace CivicSpace.Data.Repositories
 {
     public class NodeRepository : INodeRepository
     {
@@ -32,13 +32,13 @@ namespace CivicSpace.Data.Content.Repositories
                 n.Tenant == tenant &&
                 n.Module == module &&
                 n.Type == type &&
-                n.ParentNodeId == "");
+                n.ParentId == "");
         }
 
-        public async Task<IEnumerable<Node>> GetChildrenAsync(string id, string type)
+        public async Task<IEnumerable<Node>> GetChildrenAsync(string parentId, string type)
         {
             return await GetByAsync(n =>
-                n.ParentNodeId == id &&
+                n.ParentId == parentId &&
                 n.Type == type);
         }
 

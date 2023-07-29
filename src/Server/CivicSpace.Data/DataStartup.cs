@@ -1,7 +1,6 @@
-using CivicSpace.Data.Content.Repositories;
-using CivicSpace.Data.Content.Repositories.Interfaces;
-using CivicSpace.Data.Content.Services.Interfaces;
-using CivicSpace.Data.Content.Services;
+using CivicSpace.Data.Interfaces;
+using CivicSpace.Data.Repositories;
+using CivicSpace.Data.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

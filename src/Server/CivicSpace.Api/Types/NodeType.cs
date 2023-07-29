@@ -1,4 +1,4 @@
-﻿using CivicSpace.Core.Content;
+﻿using CivicSpace.Core;
 using GraphQL.Types;
 
 namespace CivicSpace.Api.Types
@@ -16,7 +16,7 @@ namespace CivicSpace.Api.Types
             Field(n => n.Content, nullable: true);
             Field(n => n.Status, nullable: true);
             Field(n => n.Slug, nullable: true);
-            Field(n => n.ParentNodeId, nullable: true);
+            Field(n => n.ParentId, nullable: true);
             Field(n => n.Path, nullable: true);
         }
     }

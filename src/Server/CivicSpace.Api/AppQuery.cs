@@ -1,5 +1,5 @@
-﻿using CivicSpace.Data.Content.Repositories.Interfaces;
-using CivicSpace.Api.Types;
+﻿using CivicSpace.Api.Types;
+using CivicSpace.Data.Interfaces;
 using GraphQL;
 using GraphQL.Types;
 

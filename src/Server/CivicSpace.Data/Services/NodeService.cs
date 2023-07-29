@@ -1,8 +1,7 @@
-﻿using CivicSpace.Core.Content;
-using CivicSpace.Data.Content.Repositories.Interfaces;
-using CivicSpace.Data.Content.Services.Interfaces;
+﻿using CivicSpace.Core;
+using CivicSpace.Data.Interfaces;
 
-namespace CivicSpace.Data.Content.Services
+namespace CivicSpace.Data.Services
 {
     public class NodeService : INodeService
     {

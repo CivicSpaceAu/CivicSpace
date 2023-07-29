@@ -1,7 +1,7 @@
-﻿using CivicSpace.Core.Content;
+﻿using CivicSpace.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace CivicSpace.Data.Content.Repositories.Interfaces
+namespace CivicSpace.Data.Interfaces
 {
     public interface INodeRepository
     {
